@@ -38,6 +38,5 @@ outputs/logs/
 *.zip
 *.bak-*
 tmp/
-examples/1790870714941.pdf
 # PDF de 64 páginas sin título ni referencias en el proyecto: se revisa antes de subirlo
 docs/Para evaluar.pdf
