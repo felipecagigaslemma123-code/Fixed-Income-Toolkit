@@ -1,0 +1,39 @@
+{
+  "workbook": {
+    "filename": "Calculadora de letras 17.07.26.xlsx",
+    "path": "/Users/felipecagigaslemma/Library/CloudStorage/OneDrive-Personal/Trabajo/PROYECTO/Fixed Income Toolkit/examples/01_calculators/Calculadora de letras 17.07.26.xlsx",
+    "worksheet_count": 2,
+    "worksheet_names": [
+      "Lecap y Boncap",
+      "Sheet2"
+    ],
+    "total_non_empty_cells": 265,
+    "total_formula_cells": 135
+  },
+  "named_ranges": [],
+  "worksheets": [
+    {
+      "name": "Lecap y Boncap",
+      "visibility": "visible",
+      "used_range": "A1:AB20",
+      "max_row": 20,
+      "max_column": 28,
+      "merged_cell_ranges": [
+        "K1:O1",
+        "B1:J1"
+      ],
+      "non_empty_cells": 234,
+      "formula_cells": 135
+    },
+    {
+      "name": "Sheet2",
+      "visibility": "hidden",
+      "used_range": "A1:A32",
+      "max_row": 32,
+      "max_column": 1,
+      "merged_cell_ranges": [],
+      "non_empty_cells": 31,
+      "formula_cells": 0
+    }
+  ]
+}

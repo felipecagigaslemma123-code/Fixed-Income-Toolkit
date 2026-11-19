@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fixed-income-toolkit"
+version = "0.1.0"
+description = "Professional fixed-income analytics toolkit for Argentine Treasury instruments (LECAP / BONCAP)."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Felipe Cagigas" }]
+dependencies = [
+    "openpyxl>=3.1,<4",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7,<9",
+]
+
+[tool.setuptools]
+# No importable package is declared yet: engine modules under src/ are imported
+# via the pytest pythonpath below. A package (with __init__.py) can be declared
+# later when the public API is finalized. Installs stay dependency-only and the
+# existing import setup is preserved.
+packages = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

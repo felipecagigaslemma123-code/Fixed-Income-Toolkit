@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.fixedincome.morningsync</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/open</string>
+        <string>-gj</string>
+        <string>/Users/felipecagigaslemma/Library/CloudStorage/OneDrive-Personal/Trabajo/PROYECTO/Fixed Income Toolkit/tools/morning_sync.command</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/felipecagigaslemma/Library/CloudStorage/OneDrive-Personal/Trabajo/PROYECTO/Fixed Income Toolkit</string>
+
+    <!-- Every day at 09:30 local Mac time. The launched scheduler remains
+         active and refreshes A3 every 15 minutes. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key><integer>9</integer>
+        <key>Minute</key><integer>30</integer>
+    </dict>
+
+    <!-- If the Mac was asleep/off at 09:30, run as soon as it wakes. -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/felipecagigaslemma/Library/CloudStorage/OneDrive-Personal/Trabajo/PROYECTO/Fixed Income Toolkit/outputs/logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/felipecagigaslemma/Library/CloudStorage/OneDrive-Personal/Trabajo/PROYECTO/Fixed Income Toolkit/outputs/logs/launchd.err.log</string>
+</dict>
+</plist>

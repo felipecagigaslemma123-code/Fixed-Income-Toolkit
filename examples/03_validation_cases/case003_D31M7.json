@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "case_id": "CASE-003",
+    "ticker": "D31M7",
+    "instrument_type": "LELINK",
+    "instrument_name": "LELINK/U$D/31-03-2027",
+    "case_version": "1.0",
+    "schema_version": "1.0",
+    "status": "Draft",
+    "last_updated": "2026-10-26",
+    "description": "Validation case for dollar-linked Treasury letra D31M7, reconciled against the IAMC daily report of 05-Oct-2026. Research R-006 is NOT implementation-approved: this case documents the reconciliation, it does not authorize production use."
+  },
+  "contractual_data": {
+    "issue_date": "2026-05-29",
+    "maturity_date": "2027-03-31",
+    "coupon_structure": "ZERO_COUPON_AT_DISCOUNT",
+    "amortization": "BULLET_AT_MATURITY",
+    "redemption_value_linked": "100",
+    "reference_face_value": "100",
+    "denomination_currency": "USD",
+    "settlement_currency": "ARS",
+    "fx_settlement_rule": "A3500 of the 3rd business day prior to the amortization payment date",
+    "day_count_convention": "ACT/365",
+    "annualization_basis_days": 365,
+    "annualization_method": "EFFECTIVE",
+    "issue_price_per_1000": "956.11"
+  },
+  "contractual_source": {
+    "source_id": "AR-TREASURY-ISSUANCE",
+    "publisher": "Ministerio de Economía de la Nación",
+    "organization": "Secretaría de Finanzas",
+    "dataset": "Colocaciones de Títulos Públicos",
+    "filename": "colocaciones_30-09-26.xlsx",
+    "resolution": {
+      "type": "Auction Resolution",
+      "identifier": "28/2026 (reapertura 55/2026); family conditions: SF/SH 31/2025, BORA 35702"
+    },
+    "retrieved_from": "https://www.argentina.gob.ar/sites/default/files/colocaciones_30-09-26.xlsx",
+    "retrieval_date": "2026-10-26",
+    "source_location": "sheet Letras",
+    "issued_amount_cross_check": "IAMC reports 787M; colocaciones original tranche 787.310649M — match"
+  },
+  "market_data": {
+    "valuation_date": "2026-10-05",
+    "settlement_convention": "T+1",
+    "settlement_date": "2026-10-06",
+    "residual_days_actual": 176,
+    "market_price_ars_per_vn100": "149400.0",
+    "market_price_linked_per_vn100": "98.090",
+    "market_source": "IAMC — Informe Diario Títulos Públicos, close 05-Oct-2026",
+    "quote_type": "CLOSE",
+    "price_timestamp": null,
+    "price_basis": "ARS_PER_VN_100",
+    "fx_conversion_rate_used": "1523.09",
+    "fx_conversion_rate_status": "IMPLIED — NOT OFFICIAL. Solved from the published peso price and published yield. The BCRA A3500 of 05-Oct-2026 is 1520.00 (+0.203% difference). The conversion rule is open question Q5 of R-006."
+  },
+  "methodology": {
+    "research_id": "R-006",
+    "linked_yield_formula": "HPR = 100 / P_linked - 1 ; TEA = (1 + HPR) ^ (365 / D) - 1",
+    "derived_rates_formula": "TEM = (1 + TEA) ^ (1/12) - 1 ; TNA = TEM * 12 (R-004 relationships, owner decision 2026-10-26)",
+    "duration_formula": "MacD = D / 365 ; MD = MacD / (1 + TEA) (R-005, single payment)",
+    "day_count_method": "Actual calendar days from settlement to maturity, ACT/365 effective annualization",
+    "precision_policy": "Decimal, no intermediate rounding; published values and recalculated values remain distinct."
+  },
+  "expected_results": {
+    "holding_period_return": "0.019471",
+    "tea": "0.040803",
+    "tem": "0.003338",
+    "tna": "0.040059",
+    "macaulay_duration_years": "0.4822",
+    "modified_duration": "0.4633",
+    "published_ytm_iamc": "0.0408",
+    "published_dm_iamc": "0.5",
+    "published_wal_iamc": "0.48",
+    "peso_total_return": null,
+    "peso_total_return_note": "Requires a devaluation assumption governed by R-009 (no production approval). Not computed."
+  },
+  "validation": {
+    "contractual_data_status": "Validated",
+    "maturity_value_status": "Not Applicable (redemption at par 100 in linked units)",
+    "market_data_status": "Validated (price published; FX conversion rule open — Q5)",
+    "yield_metrics_status": "Reconciled against IAMC within 0.003 pp",
+    "duration_status": "Reconciled against IAMC published DM at published precision",
+    "excel_reference": null,
+    "iamc_reference": "examples/8461d895-3558-4320-a500-f7c5698fda3d.pdf (close 05-Oct-2026)",
+    "secondary_reference": "examples/1790870714941.pdf — Informe de Renta Fija (Robles Alvarez / BYMA), close 30-Sep-2026: TIR 3.02%, MD 0.48 reproduced exactly",
+    "treasury_reference": "https://www.argentina.gob.ar/normativa/nacional/norma-414934/texto",
+    "bcra_reference": "A3500 official series via BCRA estadisticascambiarias API",
+    "validation_stage": "Yield convention reconciled; FX conversion rule pending (R-006 Q5)"
+  }
+}

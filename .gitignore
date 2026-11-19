@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# Virtual environment (kept locally; not versioned)
+.venv/
+
+# Secrets — NUNCA versionar credenciales / API keys
+.env
+.env.*
+!.env.example
+secrets/
+*.secret
+credentials*.json
+
+# OS
+.DS_Store
+
+# Local runtime logs
+outputs/logs/*.log
+data/market/treasury_a3_scheduler.lock
+
+# Editors
+.idea/
+.vscode/
+
+# No se suben (ver docs/SEGURIDAD.md)
+# Libros con derechos de autor
+bibliography/
+# Datos descargados de A3, con licencia
+data/market/
+outputs/logs/
+# Copias empaquetadas del propio código
+*.zip
+*.bak-*
+tmp/
+examples/1790870714941.pdf
+# PDF de 64 páginas sin título ni referencias en el proyecto: se revisa antes de subirlo
+docs/Para evaluar.pdf

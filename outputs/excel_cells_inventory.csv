@@ -1,0 +1,266 @@
+worksheet,coordinate,row,column,column_letter,raw_value,formula,cached_value,number_format,data_type
+Lecap y Boncap,A1,1,1,A,Calculadora Lecap y Boncap,,Calculadora Lecap y Boncap,General,s
+Lecap y Boncap,B1,1,2,B,LETRAS DEL TESORO CAPITALIZABLES (LECAP),,LETRAS DEL TESORO CAPITALIZABLES (LECAP),General,s
+Lecap y Boncap,K1,1,11,K,BONOS DEL TESORO CAPITALIZABLES (BONCAP),,BONOS DEL TESORO CAPITALIZABLES (BONCAP),General,s
+Lecap y Boncap,P1,1,16,P,Calculadora libre,,Calculadora libre,General,s
+Lecap y Boncap,A2,2,1,A,Convención 30/360,,Convención 30/360,General,s
+Lecap y Boncap,B2,2,2,B,S31G6,,S31G6,General,s
+Lecap y Boncap,C2,2,3,C,S30O6,,S30O6,General,s
+Lecap y Boncap,D2,2,4,D,S30N6,,S30N6,General,s
+Lecap y Boncap,E2,2,5,E,S31L6,,S31L6,General,s
+Lecap y Boncap,F2,2,6,F,S17L6,,S17L6,General,s
+Lecap y Boncap,G2,2,7,G,S14G6,,S14G6,General,s
+Lecap y Boncap,H2,2,8,H,S30S6,,S30S6,General,s
+Lecap y Boncap,I2,2,9,I,S13N6,,S13N6,General,s
+Lecap y Boncap,J2,2,10,J,S15S6,,S15S6,General,s
+Lecap y Boncap,K2,2,11,K,T30J6,,T30J6,General,s
+Lecap y Boncap,L2,2,12,L,T15E7,,T15E7,General,s
+Lecap y Boncap,M2,2,13,M,T30A7,,T30A7,General,s
+Lecap y Boncap,N2,2,14,N,T31Y7,,T31Y7,General,s
+Lecap y Boncap,O2,2,15,O,T30J7,,T30J7,General,s
+Lecap y Boncap,A3,3,1,A,Fecha Emision,,Fecha Emision,General,s
+Lecap y Boncap,B3,3,2,B,2025-11-10 00:00:00,,2025-11-10 00:00:00,d-mmm-yy,d
+Lecap y Boncap,C3,3,3,C,2025-10-31 00:00:00,,2025-10-31 00:00:00,d-mmm-yy,d
+Lecap y Boncap,D3,3,4,D,2025-12-15 00:00:00,,2025-12-15 00:00:00,d-mmm-yy,d
+Lecap y Boncap,E3,3,5,E,2026-01-30 00:00:00,,2026-01-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,F3,3,6,F,2026-03-31 00:00:00,,2026-03-31 00:00:00,d-mmm-yy,d
+Lecap y Boncap,G3,3,7,G,2026-04-17 00:00:00,,2026-04-17 00:00:00,d-mmm-yy,d
+Lecap y Boncap,H3,3,8,H,2026-03-16 00:00:00,,2026-03-16 00:00:00,d-mmm-yy,d
+Lecap y Boncap,I3,3,9,I,2026-06-30 00:00:00,,2026-06-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,J3,3,10,J,2026-05-29 00:00:00,,2026-05-29 00:00:00,d-mmm-yy,d
+Lecap y Boncap,K3,3,11,K,2025-01-17 00:00:00,,2025-01-17 00:00:00,d-mmm-yy,d
+Lecap y Boncap,L3,3,12,L,2025-01-31 00:00:00,,2025-01-31 00:00:00,d-mmm-yy,d
+Lecap y Boncap,M3,3,13,M,2025-10-31 00:00:00,,2025-10-31 00:00:00,d-mmm-yy,d
+Lecap y Boncap,N3,3,14,N,2025-12-15 00:00:00,,2025-12-15 00:00:00,d-mmm-yy,d
+Lecap y Boncap,O3,3,15,O,2026-01-16 00:00:00,,2026-01-16 00:00:00,d-mmm-yy,d
+Lecap y Boncap,P3,3,16,P,2024-11-29 00:00:00,,2024-11-29 00:00:00,d-mmm-yy,d
+Lecap y Boncap,X3,3,24,X,CI,,CI,General,s
+Lecap y Boncap,A4,4,1,A,Fecha Vencimiento,,Fecha Vencimiento,General,s
+Lecap y Boncap,B4,4,2,B,2026-08-31 00:00:00,,2026-08-31 00:00:00,d-mmm-yy,d
+Lecap y Boncap,C4,4,3,C,2026-10-30 00:00:00,,2026-10-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,D4,4,4,D,2026-11-30 00:00:00,,2026-11-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,E4,4,5,E,2026-07-31 00:00:00,,2026-07-31 00:00:00,d-mmm-yy,d
+Lecap y Boncap,F4,4,6,F,2026-07-17 00:00:00,,2026-07-17 00:00:00,d-mmm-yy,d
+Lecap y Boncap,G4,4,7,G,2026-08-14 00:00:00,,2026-08-14 00:00:00,d-mmm-yy,d
+Lecap y Boncap,H4,4,8,H,2026-09-30 00:00:00,,2026-09-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,I4,4,9,I,2026-09-30 00:00:00,,2026-09-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,J4,4,10,J,2026-09-15 00:00:00,,2026-09-15 00:00:00,d-mmm-yy,d
+Lecap y Boncap,K4,4,11,K,2026-06-30 00:00:00,,2026-06-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,L4,4,12,L,2027-01-15 00:00:00,,2027-01-15 00:00:00,d-mmm-yy,d
+Lecap y Boncap,M4,4,13,M,2027-04-30 00:00:00,,2027-04-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,N4,4,14,N,2027-05-31 00:00:00,,2027-05-31 00:00:00,d-mmm-yy,d
+Lecap y Boncap,O4,4,15,O,2027-06-30 00:00:00,,2027-06-30 00:00:00,d-mmm-yy,d
+Lecap y Boncap,P4,4,16,P,2026-02-13 00:00:00,,2026-02-13 00:00:00,d-mmm-yy,d
+Lecap y Boncap,X4,4,24,X,24 h,,24 h,General,s
+Lecap y Boncap,A5,5,1,A,Plazo original (días),,Plazo original (días),General,s
+Lecap y Boncap,B5,5,2,B,"=+DAYS360(B3,B4)","=+DAYS360(B3,B4)",291,0,f
+Lecap y Boncap,C5,5,3,C,"=+DAYS360(C3,C4)","=+DAYS360(C3,C4)",360,0,f
+Lecap y Boncap,D5,5,4,D,"=+DAYS360(D3,D4)","=+DAYS360(D3,D4)",345,0,f
+Lecap y Boncap,E5,5,5,E,"=+DAYS360(E3,E4)","=+DAYS360(E3,E4)",180,0,f
+Lecap y Boncap,F5,5,6,F,"=+DAYS360(F3,F4)","=+DAYS360(F3,F4)",107,0,f
+Lecap y Boncap,G5,5,7,G,"=+DAYS360(G3,G4)","=+DAYS360(G3,G4)",117,0,f
+Lecap y Boncap,H5,5,8,H,"=+DAYS360(H3,H4)","=+DAYS360(H3,H4)",194,0,f
+Lecap y Boncap,I5,5,9,I,"=+DAYS360(I3,I4)","=+DAYS360(I3,I4)",90,0,f
+Lecap y Boncap,J5,5,10,J,"=+DAYS360(J3,J4)","=+DAYS360(J3,J4)",106,0,f
+Lecap y Boncap,K5,5,11,K,"=+DAYS360(K3,K4)","=+DAYS360(K3,K4)",523,0,f
+Lecap y Boncap,L5,5,12,L,"=+DAYS360(L3,L4)","=+DAYS360(L3,L4)",705,0,f
+Lecap y Boncap,M5,5,13,M,"=+DAYS360(M3,M4)","=+DAYS360(M3,M4)",540,0,f
+Lecap y Boncap,N5,5,14,N,"=+DAYS360(N3,N4)","=+DAYS360(N3,N4)",526,0,f
+Lecap y Boncap,O5,5,15,O,"=+DAYS360(O3,O4)","=+DAYS360(O3,O4)",524,0,f
+Lecap y Boncap,P5,5,16,P,"=+DAYS360(P3,P4)","=+DAYS360(P3,P4)",434,0,f
+Lecap y Boncap,A6,6,1,A,Fecha de negociación/licitación,,Fecha de negociación/licitación,General,s
+Lecap y Boncap,A7,7,1,A,Plazo de negociación/liquidación,,Plazo de negociación/liquidación,General,s
+Lecap y Boncap,B7,7,2,B,24 h,,24 h,0,s
+Lecap y Boncap,C7,7,3,C,24 h,,24 h,0,s
+Lecap y Boncap,D7,7,4,D,24 h,,24 h,0,s
+Lecap y Boncap,E7,7,5,E,24 h,,24 h,0,s
+Lecap y Boncap,F7,7,6,F,24 h,,24 h,0,s
+Lecap y Boncap,G7,7,7,G,24 h,,24 h,0,s
+Lecap y Boncap,H7,7,8,H,24 h,,24 h,0,s
+Lecap y Boncap,I7,7,9,I,24 h,,24 h,0,s
+Lecap y Boncap,J7,7,10,J,24 h,,24 h,0,s
+Lecap y Boncap,K7,7,11,K,24 h,,24 h,0,s
+Lecap y Boncap,L7,7,12,L,24 h,,24 h,0,s
+Lecap y Boncap,M7,7,13,M,24 h,,24 h,0,s
+Lecap y Boncap,N7,7,14,N,24 h,,24 h,0,s
+Lecap y Boncap,O7,7,15,O,24 h,,24 h,0,s
+Lecap y Boncap,P7,7,16,P,24 h,,24 h,0,s
+Lecap y Boncap,A8,8,1,A,Fecha Cálculo,,Fecha Cálculo,General,s
+Lecap y Boncap,B8,8,2,B,"=IF(B6="""", """", IF(B7=""CI"",WORKDAY(B6,0,Sheet2!$A$3:$A$14),IF(B7=""24 h"",WORKDAY(B6,1,Sheet2!$A$3:$A$14),WORKDAY(B6,2,Sheet2!$A$3:$A$14))))","=IF(B6="""", """", IF(B7=""CI"",WORKDAY(B6,0,Sheet2!$A$3:$A$14),IF(B7=""24 h"",WORKDAY(B6,1,Sheet2!$A$3:$A$14),WORKDAY(B6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,C8,8,3,C,"=IF(C6="""", """", IF(C7=""CI"",WORKDAY(C6,0,Sheet2!$A$3:$A$14),IF(C7=""24 h"",WORKDAY(C6,1,Sheet2!$A$3:$A$14),WORKDAY(C6,2,Sheet2!$A$3:$A$14))))","=IF(C6="""", """", IF(C7=""CI"",WORKDAY(C6,0,Sheet2!$A$3:$A$14),IF(C7=""24 h"",WORKDAY(C6,1,Sheet2!$A$3:$A$14),WORKDAY(C6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,D8,8,4,D,"=IF(D6="""", """", IF(D7=""CI"",WORKDAY(D6,0,Sheet2!$A$3:$A$14),IF(D7=""24 h"",WORKDAY(D6,1,Sheet2!$A$3:$A$14),WORKDAY(D6,2,Sheet2!$A$3:$A$14))))","=IF(D6="""", """", IF(D7=""CI"",WORKDAY(D6,0,Sheet2!$A$3:$A$14),IF(D7=""24 h"",WORKDAY(D6,1,Sheet2!$A$3:$A$14),WORKDAY(D6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,E8,8,5,E,"=IF(E6="""", """", IF(E7=""CI"",WORKDAY(E6,0,Sheet2!$A$3:$A$14),IF(E7=""24 h"",WORKDAY(E6,1,Sheet2!$A$3:$A$14),WORKDAY(E6,2,Sheet2!$A$3:$A$14))))","=IF(E6="""", """", IF(E7=""CI"",WORKDAY(E6,0,Sheet2!$A$3:$A$14),IF(E7=""24 h"",WORKDAY(E6,1,Sheet2!$A$3:$A$14),WORKDAY(E6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,F8,8,6,F,"=IF(F6="""", """", IF(F7=""CI"",WORKDAY(F6,0,Sheet2!$A$3:$A$14),IF(F7=""24 h"",WORKDAY(F6,1,Sheet2!$A$3:$A$14),WORKDAY(F6,2,Sheet2!$A$3:$A$14))))","=IF(F6="""", """", IF(F7=""CI"",WORKDAY(F6,0,Sheet2!$A$3:$A$14),IF(F7=""24 h"",WORKDAY(F6,1,Sheet2!$A$3:$A$14),WORKDAY(F6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,G8,8,7,G,"=IF(G6="""", """", IF(G7=""CI"",WORKDAY(G6,0,Sheet2!$A$3:$A$14),IF(G7=""24 h"",WORKDAY(G6,1,Sheet2!$A$3:$A$14),WORKDAY(G6,2,Sheet2!$A$3:$A$14))))","=IF(G6="""", """", IF(G7=""CI"",WORKDAY(G6,0,Sheet2!$A$3:$A$14),IF(G7=""24 h"",WORKDAY(G6,1,Sheet2!$A$3:$A$14),WORKDAY(G6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,H8,8,8,H,"=IF(H6="""", """", IF(H7=""CI"",WORKDAY(H6,0,Sheet2!$A$3:$A$14),IF(H7=""24 h"",WORKDAY(H6,1,Sheet2!$A$3:$A$14),WORKDAY(H6,2,Sheet2!$A$3:$A$14))))","=IF(H6="""", """", IF(H7=""CI"",WORKDAY(H6,0,Sheet2!$A$3:$A$14),IF(H7=""24 h"",WORKDAY(H6,1,Sheet2!$A$3:$A$14),WORKDAY(H6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,I8,8,9,I,"=IF(I6="""", """", IF(I7=""CI"",WORKDAY(I6,0,Sheet2!$A$3:$A$14),IF(I7=""24 h"",WORKDAY(I6,1,Sheet2!$A$3:$A$14),WORKDAY(I6,2,Sheet2!$A$3:$A$14))))","=IF(I6="""", """", IF(I7=""CI"",WORKDAY(I6,0,Sheet2!$A$3:$A$14),IF(I7=""24 h"",WORKDAY(I6,1,Sheet2!$A$3:$A$14),WORKDAY(I6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,J8,8,10,J,"=IF(J6="""", """", IF(J7=""CI"",WORKDAY(J6,0,Sheet2!$A$3:$A$14),IF(J7=""24 h"",WORKDAY(J6,1,Sheet2!$A$3:$A$14),WORKDAY(J6,2,Sheet2!$A$3:$A$14))))","=IF(J6="""", """", IF(J7=""CI"",WORKDAY(J6,0,Sheet2!$A$3:$A$14),IF(J7=""24 h"",WORKDAY(J6,1,Sheet2!$A$3:$A$14),WORKDAY(J6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,K8,8,11,K,"=IF(K6="""", """", IF(K7=""CI"",WORKDAY(K6,0,Sheet2!$A$3:$A$14),IF(K7=""24 h"",WORKDAY(K6,1,Sheet2!$A$3:$A$14),WORKDAY(K6,2,Sheet2!$A$3:$A$14))))","=IF(K6="""", """", IF(K7=""CI"",WORKDAY(K6,0,Sheet2!$A$3:$A$14),IF(K7=""24 h"",WORKDAY(K6,1,Sheet2!$A$3:$A$14),WORKDAY(K6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,L8,8,12,L,"=IF(L6="""", """", IF(L7=""CI"",WORKDAY(L6,0,Sheet2!$A$3:$A$14),IF(L7=""24 h"",WORKDAY(L6,1,Sheet2!$A$3:$A$14),WORKDAY(L6,2,Sheet2!$A$3:$A$14))))","=IF(L6="""", """", IF(L7=""CI"",WORKDAY(L6,0,Sheet2!$A$3:$A$14),IF(L7=""24 h"",WORKDAY(L6,1,Sheet2!$A$3:$A$14),WORKDAY(L6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,M8,8,13,M,"=IF(M6="""", """", IF(M7=""CI"",WORKDAY(M6,0,Sheet2!$A$3:$A$14),IF(M7=""24 h"",WORKDAY(M6,1,Sheet2!$A$3:$A$14),WORKDAY(M6,2,Sheet2!$A$3:$A$14))))","=IF(M6="""", """", IF(M7=""CI"",WORKDAY(M6,0,Sheet2!$A$3:$A$14),IF(M7=""24 h"",WORKDAY(M6,1,Sheet2!$A$3:$A$14),WORKDAY(M6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,N8,8,14,N,"=IF(N6="""", """", IF(N7=""CI"",WORKDAY(N6,0,Sheet2!$A$3:$A$14),IF(N7=""24 h"",WORKDAY(N6,1,Sheet2!$A$3:$A$14),WORKDAY(N6,2,Sheet2!$A$3:$A$14))))","=IF(N6="""", """", IF(N7=""CI"",WORKDAY(N6,0,Sheet2!$A$3:$A$14),IF(N7=""24 h"",WORKDAY(N6,1,Sheet2!$A$3:$A$14),WORKDAY(N6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,O8,8,15,O,"=IF(O6="""", """", IF(O7=""CI"",WORKDAY(O6,0,Sheet2!$A$3:$A$14),IF(O7=""24 h"",WORKDAY(O6,1,Sheet2!$A$3:$A$14),WORKDAY(O6,2,Sheet2!$A$3:$A$14))))","=IF(O6="""", """", IF(O7=""CI"",WORKDAY(O6,0,Sheet2!$A$3:$A$14),IF(O7=""24 h"",WORKDAY(O6,1,Sheet2!$A$3:$A$14),WORKDAY(O6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,P8,8,16,P,"=IF(P6="""", """", IF(P7=""CI"",WORKDAY(P6,0,Sheet2!$A$3:$A$14),IF(P7=""24 h"",WORKDAY(P6,1,Sheet2!$A$3:$A$14),WORKDAY(P6,2,Sheet2!$A$3:$A$14))))","=IF(P6="""", """", IF(P7=""CI"",WORKDAY(P6,0,Sheet2!$A$3:$A$14),IF(P7=""24 h"",WORKDAY(P6,1,Sheet2!$A$3:$A$14),WORKDAY(P6,2,Sheet2!$A$3:$A$14))))",,d-mmm-yy,f
+Lecap y Boncap,A9,9,1,A,Fecha de vto (para TIR),,Fecha de vto (para TIR),General,s
+Lecap y Boncap,B9,9,2,B,=+B4,=+B4,2026-08-31 00:00:00,d-mmm-yy,f
+Lecap y Boncap,C9,9,3,C,=+C4,=+C4,2026-10-30 00:00:00,d-mmm-yy,f
+Lecap y Boncap,D9,9,4,D,=+D4,=+D4,2026-11-30 00:00:00,d-mmm-yy,f
+Lecap y Boncap,E9,9,5,E,=+E4,=+E4,2026-07-31 00:00:00,d-mmm-yy,f
+Lecap y Boncap,F9,9,6,F,=+F4,=+F4,2026-07-17 00:00:00,d-mmm-yy,f
+Lecap y Boncap,G9,9,7,G,=+G4,=+G4,2026-08-14 00:00:00,d-mmm-yy,f
+Lecap y Boncap,H9,9,8,H,=+H4,=+H4,2026-09-30 00:00:00,d-mmm-yy,f
+Lecap y Boncap,I9,9,9,I,=+I4,=+I4,2026-09-30 00:00:00,d-mmm-yy,f
+Lecap y Boncap,J9,9,10,J,=+J4,=+J4,2026-09-15 00:00:00,d-mmm-yy,f
+Lecap y Boncap,K9,9,11,K,=+K4,=+K4,2026-06-30 00:00:00,d-mmm-yy,f
+Lecap y Boncap,L9,9,12,L,=+L4,=+L4,2027-01-15 00:00:00,d-mmm-yy,f
+Lecap y Boncap,M9,9,13,M,=+M4,=+M4,2027-04-30 00:00:00,d-mmm-yy,f
+Lecap y Boncap,N9,9,14,N,=+N4,=+N4,2027-05-31 00:00:00,d-mmm-yy,f
+Lecap y Boncap,O9,9,15,O,=+O4,=+O4,2027-06-30 00:00:00,d-mmm-yy,f
+Lecap y Boncap,P9,9,16,P,=+P4,=+P4,2026-02-13 00:00:00,d-mmm-yy,f
+Lecap y Boncap,A10,10,1,A,Plazo al vencimiento residual (días)**,,Plazo al vencimiento residual (días)**,General,s
+Lecap y Boncap,B10,10,2,B,"=IF(B6="""","""",B4-B8)","=IF(B6="""","""",B4-B8)",,0,f
+Lecap y Boncap,C10,10,3,C,"=IF(C6="""","""",C4-C8)","=IF(C6="""","""",C4-C8)",,0,f
+Lecap y Boncap,D10,10,4,D,"=IF(D6="""","""",D4-D8)","=IF(D6="""","""",D4-D8)",,0,f
+Lecap y Boncap,E10,10,5,E,"=IF(E6="""","""",E4-E8)","=IF(E6="""","""",E4-E8)",,0,f
+Lecap y Boncap,F10,10,6,F,"=IF(F6="""","""",F4-F8)","=IF(F6="""","""",F4-F8)",,0,f
+Lecap y Boncap,G10,10,7,G,"=IF(G6="""","""",G4-G8)","=IF(G6="""","""",G4-G8)",,0,f
+Lecap y Boncap,H10,10,8,H,"=IF(H6="""","""",H4-H8)","=IF(H6="""","""",H4-H8)",,0,f
+Lecap y Boncap,I10,10,9,I,"=IF(I6="""","""",I4-I8)","=IF(I6="""","""",I4-I8)",,0,f
+Lecap y Boncap,J10,10,10,J,"=IF(J6="""","""",J4-J8)","=IF(J6="""","""",J4-J8)",,0,f
+Lecap y Boncap,K10,10,11,K,"=IF(K6="""","""",K4-K8)","=IF(K6="""","""",K4-K8)",,0,f
+Lecap y Boncap,L10,10,12,L,"=IF(L6="""","""",L4-L8)","=IF(L6="""","""",L4-L8)",,0,f
+Lecap y Boncap,M10,10,13,M,"=IF(M6="""","""",M4-M8)","=IF(M6="""","""",M4-M8)",,0,f
+Lecap y Boncap,N10,10,14,N,"=IF(N6="""","""",N4-N8)","=IF(N6="""","""",N4-N8)",,0,f
+Lecap y Boncap,O10,10,15,O,"=IF(O6="""","""",O4-O8)","=IF(O6="""","""",O4-O8)",,0,f
+Lecap y Boncap,P10,10,16,P,"=IF(P6="""","""",P4-P8)","=IF(P6="""","""",P4-P8)",,0,f
+Lecap y Boncap,A11,11,1,A,Tasa licitada de emisión,,Tasa licitada de emisión,General,s
+Lecap y Boncap,B11,11,2,B,0.025,,0.025,0.00%,n
+Lecap y Boncap,C11,11,3,C,0.0255,,0.0255,0.00%,n
+Lecap y Boncap,D11,11,4,D,0.023,,0.023,0.00%,n
+Lecap y Boncap,E11,11,5,E,0.0275,,0.0275,0.00%,n
+Lecap y Boncap,F11,11,6,F,0.0216,,0.0216,0.00%,n
+Lecap y Boncap,G11,11,7,G,0.02,,0.02,0.00%,n
+Lecap y Boncap,H11,11,8,H,0.0253,,0.0253,0.00%,n
+Lecap y Boncap,I11,11,9,I,0.021,,0.021,0.00%,n
+Lecap y Boncap,J11,11,10,J,0.0199,,0.0199,0.00%,n
+Lecap y Boncap,K11,11,11,K,0.0215,,0.0215,0.00%,n
+Lecap y Boncap,L11,11,12,L,0.0205,,0.0205,0.00%,n
+Lecap y Boncap,M11,11,13,M,0.0255,,0.0255,0.00%,n
+Lecap y Boncap,N11,11,14,N,0.024,,0.024,0.00%,n
+Lecap y Boncap,O11,11,15,O,0.0258,,0.0258,0.00%,n
+Lecap y Boncap,P11,11,16,P,0.026,,0.026,0.00%,n
+Lecap y Boncap,A12,12,1,A,Precio (ARS c/ 100 VN),,Precio (ARS c/ 100 VN),General,s
+Lecap y Boncap,P12,12,16,P,0,,0,"#,##0.000_);\(#,##0.000\)",n
+Lecap y Boncap,B13,13,2,B,=-B12,=-B12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,C13,13,3,C,=-C12,=-C12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,D13,13,4,D,=-D12,=-D12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,E13,13,5,E,=-E12,=-E12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,F13,13,6,F,=-F12,=-F12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,G13,13,7,G,=-G12,=-G12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,H13,13,8,H,=-H12,=-H12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,I13,13,9,I,=-I12,=-I12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,J13,13,10,J,=-J12,=-J12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,K13,13,11,K,=-K12,=-K12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,L13,13,12,L,=-L12,=-L12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,M13,13,13,M,=-M12,=-M12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,N13,13,14,N,=-N12,=-N12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,O13,13,15,O,=-O12,=-O12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,P13,13,16,P,=-P12,=-P12,0,"_(""$""* #,##0.00_);_(""$""* \(#,##0.00\);_(""$""* ""-""??_);_(@_)",f
+Lecap y Boncap,A14,14,1,A,VPV (ARS c/100 VNO)*,,VPV (ARS c/100 VNO)*,General,s
+Lecap y Boncap,B14,14,2,B,"=100*((1+B11)^((DAYS360(B3,B4)/360)*12))","=100*((1+B11)^((DAYS360(B3,B4)/360)*12))",127.06369905967132,"#,##0.000",f
+Lecap y Boncap,C14,14,3,C,"=100*((1+C11)^((DAYS360(C3,C4)/360)*12))","=100*((1+C11)^((DAYS360(C3,C4)/360)*12))",135.27824999695426,"#,##0.000",f
+Lecap y Boncap,D14,14,4,D,"=100*((1+D11)^((DAYS360(D3,D4)/360)*12))","=100*((1+D11)^((DAYS360(D3,D4)/360)*12))",129.88822671719913,"#,##0.000",f
+Lecap y Boncap,E14,14,5,E,"=100*((1+E11)^((DAYS360(E3,E4)/360)*12))","=100*((1+E11)^((DAYS360(E3,E4)/360)*12))",117.67683610092683,"#,##0.000",f
+Lecap y Boncap,F14,14,6,F,"=100*((1+F11)^((DAYS360(F3,F4)/360)*12))","=100*((1+F11)^((DAYS360(F3,F4)/360)*12))",107.91997113654924,"#,##0.000",f
+Lecap y Boncap,G14,14,7,G,"=100*((1+G11)^((DAYS360(G3,G4)/360)*12))","=100*((1+G11)^((DAYS360(G3,G4)/360)*12))",108.02907808826146,"#,##0.000",f
+Lecap y Boncap,H14,14,8,H,"=100*((1+H11)^((DAYS360(H3,H4)/360)*12))","=100*((1+H11)^((DAYS360(H3,H4)/360)*12))",117.53562589582242,"#,##0.000",f
+Lecap y Boncap,I14,14,9,I,"=100*((1+I11)^((DAYS360(I3,I4)/360)*12))","=100*((1+I11)^((DAYS360(I3,I4)/360)*12))",106.43322609999997,"#,##0.000",f
+Lecap y Boncap,J14,14,10,J,"=100*((1+J11)^((DAYS360(J3,J4)/360)*12))","=100*((1+J11)^((DAYS360(J3,J4)/360)*12))",107.21037727507621,"#,##0.000",f
+Lecap y Boncap,K14,14,11,K,"=100*((1+K11)^((DAYS360(K3,K4)/360)*12))","=100*((1+K11)^((DAYS360(K3,K4)/360)*12))",144.89573444321886,"#,##0.000",f
+Lecap y Boncap,L14,14,12,L,"=100*((1+L11)^((DAYS360(L3,L4)/360)*12))","=100*((1+L11)^((DAYS360(L3,L4)/360)*12))",161.10377342466148,"#,##0.000",f
+Lecap y Boncap,M14,14,13,M,"=100*((1+M11)^((DAYS360(M3,M4)/360)*12))","=100*((1+M11)^((DAYS360(M3,M4)/360)*12))",157.34102123941065,"#,##0.000",f
+Lecap y Boncap,N14,14,14,N,"=100*((1+N11)^((DAYS360(N3,N4)/360)*12))","=100*((1+N11)^((DAYS360(N3,N4)/360)*12))",151.56278365654154,"#,##0.000",f
+Lecap y Boncap,O14,14,15,O,"=100*((1+O11)^((DAYS360(O3,O4)/360)*12))","=100*((1+O11)^((DAYS360(O3,O4)/360)*12))",156.03729080688436,"#,##0.000",f
+Lecap y Boncap,P14,14,16,P,"=100*((1+P11)^((DAYS360(P3,P4)/360)*12))","=100*((1+P11)^((DAYS360(P3,P4)/360)*12))",144.96566514597623,"#,##0.00",f
+Lecap y Boncap,A15,15,1,A,Tasa del Período (Tasa efectiva),,Tasa del Período (Tasa efectiva),General,s
+Lecap y Boncap,B15,15,2,B,"=IFERROR((B14/B12)-1, """")","=IFERROR((B14/B12)-1, """")",,0.00%,f
+Lecap y Boncap,C15,15,3,C,"=IFERROR((C14/C12)-1, """")","=IFERROR((C14/C12)-1, """")",,0.00%,f
+Lecap y Boncap,D15,15,4,D,"=IFERROR((D14/D12)-1, """")","=IFERROR((D14/D12)-1, """")",,0.00%,f
+Lecap y Boncap,E15,15,5,E,"=IFERROR((E14/E12)-1, """")","=IFERROR((E14/E12)-1, """")",,0.00%,f
+Lecap y Boncap,F15,15,6,F,"=IFERROR((F14/F12)-1, """")","=IFERROR((F14/F12)-1, """")",,0.00%,f
+Lecap y Boncap,G15,15,7,G,"=IFERROR((G14/G12)-1, """")","=IFERROR((G14/G12)-1, """")",,0.00%,f
+Lecap y Boncap,H15,15,8,H,"=IFERROR((H14/H12)-1, """")","=IFERROR((H14/H12)-1, """")",,0.00%,f
+Lecap y Boncap,I15,15,9,I,"=IFERROR((I14/I12)-1, """")","=IFERROR((I14/I12)-1, """")",,0.00%,f
+Lecap y Boncap,J15,15,10,J,"=IFERROR((J14/J12)-1, """")","=IFERROR((J14/J12)-1, """")",,0.00%,f
+Lecap y Boncap,K15,15,11,K,"=IFERROR((K14/K12)-1, """")","=IFERROR((K14/K12)-1, """")",,0.00%,f
+Lecap y Boncap,L15,15,12,L,"=IFERROR((L14/L12)-1, """")","=IFERROR((L14/L12)-1, """")",,0.00%,f
+Lecap y Boncap,M15,15,13,M,"=IFERROR((M14/M12)-1, """")","=IFERROR((M14/M12)-1, """")",,0.00%,f
+Lecap y Boncap,N15,15,14,N,"=IFERROR((N14/N12)-1, """")","=IFERROR((N14/N12)-1, """")",,0.00%,f
+Lecap y Boncap,O15,15,15,O,"=IFERROR((O14/O12)-1, """")","=IFERROR((O14/O12)-1, """")",,0.00%,f
+Lecap y Boncap,P15,15,16,P,"=IFERROR((P14/P12)-1, """")","=IFERROR((P14/P12)-1, """")",,0.00%,f
+Lecap y Boncap,A16,16,1,A,Tasa Efectiva Equivalente Anual (TEA),,Tasa Efectiva Equivalente Anual (TEA),General,s
+Lecap y Boncap,B16,16,2,B,"=IFERROR(((1+B15)^(360/DAYS360(B8,B4))-1), """")","=IFERROR(((1+B15)^(360/DAYS360(B8,B4))-1), """")",,0.00%,f
+Lecap y Boncap,C16,16,3,C,"=IFERROR(((1+C15)^(360/DAYS360(C8,C4))-1), """")","=IFERROR(((1+C15)^(360/DAYS360(C8,C4))-1), """")",,0.00%,f
+Lecap y Boncap,D16,16,4,D,"=IFERROR(((1+D15)^(360/DAYS360(D8,D4))-1), """")","=IFERROR(((1+D15)^(360/DAYS360(D8,D4))-1), """")",,0.00%,f
+Lecap y Boncap,E16,16,5,E,"=IFERROR(((1+E15)^(360/DAYS360(E8,E4))-1), """")","=IFERROR(((1+E15)^(360/DAYS360(E8,E4))-1), """")",,0.00%,f
+Lecap y Boncap,F16,16,6,F,"=IFERROR(((1+F15)^(360/DAYS360(F8,F4))-1), """")","=IFERROR(((1+F15)^(360/DAYS360(F8,F4))-1), """")",,0.00%,f
+Lecap y Boncap,G16,16,7,G,"=IFERROR(((1+G15)^(360/DAYS360(G8,G4))-1), """")","=IFERROR(((1+G15)^(360/DAYS360(G8,G4))-1), """")",,0.00%,f
+Lecap y Boncap,H16,16,8,H,"=IFERROR(((1+H15)^(360/DAYS360(H8,H4))-1), """")","=IFERROR(((1+H15)^(360/DAYS360(H8,H4))-1), """")",,0.00%,f
+Lecap y Boncap,I16,16,9,I,"=IFERROR(((1+I15)^(360/DAYS360(I8,I4))-1), """")","=IFERROR(((1+I15)^(360/DAYS360(I8,I4))-1), """")",,0.00%,f
+Lecap y Boncap,J16,16,10,J,"=IFERROR(((1+J15)^(360/DAYS360(J8,J4))-1), """")","=IFERROR(((1+J15)^(360/DAYS360(J8,J4))-1), """")",,0.00%,f
+Lecap y Boncap,K16,16,11,K,"=IFERROR(((1+K15)^(360/DAYS360(K8,K4))-1), """")","=IFERROR(((1+K15)^(360/DAYS360(K8,K4))-1), """")",,0.00%,f
+Lecap y Boncap,L16,16,12,L,"=IFERROR(((1+L15)^(360/DAYS360(L8,L4))-1), """")","=IFERROR(((1+L15)^(360/DAYS360(L8,L4))-1), """")",,0.00%,f
+Lecap y Boncap,M16,16,13,M,"=IFERROR(((1+M15)^(360/DAYS360(M8,M4))-1), """")","=IFERROR(((1+M15)^(360/DAYS360(M8,M4))-1), """")",,0.00%,f
+Lecap y Boncap,N16,16,14,N,"=IFERROR(((1+N15)^(360/DAYS360(N8,N4))-1), """")","=IFERROR(((1+N15)^(360/DAYS360(N8,N4))-1), """")",,0.00%,f
+Lecap y Boncap,O16,16,15,O,"=IFERROR(((1+O15)^(360/DAYS360(O8,O4))-1), """")","=IFERROR(((1+O15)^(360/DAYS360(O8,O4))-1), """")",,0.00%,f
+Lecap y Boncap,P16,16,16,P,"=IFERROR(((1+P15)^(360/DAYS360(P8,P4))-1), """")","=IFERROR(((1+P15)^(360/DAYS360(P8,P4))-1), """")",,0.00%,f
+Lecap y Boncap,A17,17,1,A,Tasa Nominal Anual (TNA)***,,Tasa Nominal Anual (TNA)***,General,s
+Lecap y Boncap,B17,17,2,B,"=IFERROR(B15*360/DAYS360(B8, B4), """")","=IFERROR(B15*360/DAYS360(B8, B4), """")",,0.00%,f
+Lecap y Boncap,C17,17,3,C,"=IFERROR(C15*360/DAYS360(C8, C4), """")","=IFERROR(C15*360/DAYS360(C8, C4), """")",,0.00%,f
+Lecap y Boncap,D17,17,4,D,"=IFERROR(D15*360/DAYS360(D8, D4), """")","=IFERROR(D15*360/DAYS360(D8, D4), """")",,0.00%,f
+Lecap y Boncap,E17,17,5,E,"=IFERROR(E15*360/DAYS360(E8, E4), """")","=IFERROR(E15*360/DAYS360(E8, E4), """")",,0.00%,f
+Lecap y Boncap,F17,17,6,F,"=IFERROR(F15*360/DAYS360(F8, F4), """")","=IFERROR(F15*360/DAYS360(F8, F4), """")",,0.00%,f
+Lecap y Boncap,G17,17,7,G,"=IFERROR(G15*360/DAYS360(G8, G4), """")","=IFERROR(G15*360/DAYS360(G8, G4), """")",,0.00%,f
+Lecap y Boncap,H17,17,8,H,"=IFERROR(H15*360/DAYS360(H8, H4), """")","=IFERROR(H15*360/DAYS360(H8, H4), """")",,0.00%,f
+Lecap y Boncap,I17,17,9,I,"=IFERROR(I15*360/DAYS360(I8, I4), """")","=IFERROR(I15*360/DAYS360(I8, I4), """")",,0.00%,f
+Lecap y Boncap,J17,17,10,J,"=IFERROR(J15*360/DAYS360(J8, J4), """")","=IFERROR(J15*360/DAYS360(J8, J4), """")",,0.00%,f
+Lecap y Boncap,K17,17,11,K,"=IFERROR(K15*360/DAYS360(K8, K4), """")","=IFERROR(K15*360/DAYS360(K8, K4), """")",,0.00%,f
+Lecap y Boncap,L17,17,12,L,"=IFERROR(L15*360/DAYS360(L8, L4), """")","=IFERROR(L15*360/DAYS360(L8, L4), """")",,0.00%,f
+Lecap y Boncap,M17,17,13,M,"=IFERROR(M15*360/DAYS360(M8, M4), """")","=IFERROR(M15*360/DAYS360(M8, M4), """")",,0.00%,f
+Lecap y Boncap,N17,17,14,N,"=IFERROR(N15*360/DAYS360(N8, N4), """")","=IFERROR(N15*360/DAYS360(N8, N4), """")",,0.00%,f
+Lecap y Boncap,O17,17,15,O,"=IFERROR(O15*360/DAYS360(O8, O4), """")","=IFERROR(O15*360/DAYS360(O8, O4), """")",,0.00%,f
+Lecap y Boncap,P17,17,16,P,"=IFERROR(P15*360/DAYS360(P8, P4), """")","=IFERROR(P15*360/DAYS360(P8, P4), """")",,0.00%,f
+Lecap y Boncap,A18,18,1,A,*VPV: Valor de Pago al Vencimiento,,*VPV: Valor de Pago al Vencimiento,General,s
+Lecap y Boncap,A19,19,1,A,** Días entre fecha de liquidación y fecha de vencimiento,,** Días entre fecha de liquidación y fecha de vencimiento,General,s
+Lecap y Boncap,A20,20,1,A,*** Calculados a fechas de liquidación,,*** Calculados a fechas de liquidación,General,s
+Sheet2,A2,2,1,A,FERIADOS,,FERIADOS,General,s
+Sheet2,A3,3,1,A,2024-01-01 00:00:00,,2024-01-01 00:00:00,d-mmm-yy,d
+Sheet2,A4,4,1,A,2024-02-12 00:00:00,,2024-02-12 00:00:00,d-mmm-yy,d
+Sheet2,A5,5,1,A,2024-02-13 00:00:00,,2024-02-13 00:00:00,d-mmm-yy,d
+Sheet2,A6,6,1,A,2024-03-28 00:00:00,,2024-03-28 00:00:00,d-mmm-yy,d
+Sheet2,A7,7,1,A,2024-03-29 00:00:00,,2024-03-29 00:00:00,d-mmm-yy,d
+Sheet2,A8,8,1,A,2024-04-01 00:00:00,,2024-04-01 00:00:00,d-mmm-yy,d
+Sheet2,A9,9,1,A,2024-04-02 00:00:00,,2024-04-02 00:00:00,d-mmm-yy,d
+Sheet2,A10,10,1,A,2024-05-01 00:00:00,,2024-05-01 00:00:00,d-mmm-yy,d
+Sheet2,A11,11,1,A,2024-06-20 00:00:00,,2024-06-20 00:00:00,d-mmm-yy,d
+Sheet2,A12,12,1,A,2024-07-09 00:00:00,,2024-07-09 00:00:00,d-mmm-yy,d
+Sheet2,A13,13,1,A,2024-11-20 00:00:00,,2024-11-20 00:00:00,d-mmm-yy,d
+Sheet2,A14,14,1,A,2024-12-25 00:00:00,,2024-12-25 00:00:00,d-mmm-yy,d
+Sheet2,A15,15,1,A,2024-12-31 00:00:00,,2024-12-31 00:00:00,d-mmm-yy,d
+Sheet2,A16,16,1,A,2025-03-02 00:00:00,,2025-03-02 00:00:00,d-mmm-yy,d
+Sheet2,A17,17,1,A,2025-03-03 00:00:00,,2025-03-03 00:00:00,d-mmm-yy,d
+Sheet2,A18,18,1,A,2025-03-23 00:00:00,,2025-03-23 00:00:00,d-mmm-yy,d
+Sheet2,A19,19,1,A,2025-04-01 00:00:00,,2025-04-01 00:00:00,d-mmm-yy,d
+Sheet2,A20,20,1,A,2025-04-16 00:00:00,,2025-04-16 00:00:00,d-mmm-yy,d
+Sheet2,A21,21,1,A,2025-04-17 00:00:00,,2025-04-17 00:00:00,d-mmm-yy,d
+Sheet2,A22,22,1,A,2025-04-30 00:00:00,,2025-04-30 00:00:00,d-mmm-yy,d
+Sheet2,A23,23,1,A,2025-05-01 00:00:00,,2025-05-01 00:00:00,d-mmm-yy,d
+Sheet2,A24,24,1,A,2025-06-15 00:00:00,,2025-06-15 00:00:00,d-mmm-yy,d
+Sheet2,A25,25,1,A,2025-06-19 00:00:00,,2025-06-19 00:00:00,d-mmm-yy,d
+Sheet2,A26,26,1,A,2025-07-08 00:00:00,,2025-07-08 00:00:00,d-mmm-yy,d
+Sheet2,A27,27,1,A,2025-08-14 00:00:00,,2025-08-14 00:00:00,d-mmm-yy,d
+Sheet2,A28,28,1,A,2025-10-11 00:00:00,,2025-10-11 00:00:00,d-mmm-yy,d
+Sheet2,A29,29,1,A,2025-11-20 00:00:00,,2025-11-20 00:00:00,d-mmm-yy,d
+Sheet2,A30,30,1,A,2025-11-23 00:00:00,,2025-11-23 00:00:00,d-mmm-yy,d
+Sheet2,A31,31,1,A,2025-12-07 00:00:00,,2025-12-07 00:00:00,d-mmm-yy,d
+Sheet2,A32,32,1,A,2025-12-24 00:00:00,,2025-12-24 00:00:00,d-mmm-yy,d

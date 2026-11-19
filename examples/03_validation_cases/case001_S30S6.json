@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "case_id": "CASE-001",
+    "ticker": "S30S6",
+    "instrument_type": "LECAP",
+    "case_version": "1.0",
+    "schema_version": "1.0",
+    "status": "Draft",
+    "last_updated": "2026-07-27",
+    "description": "Validation case for LECAP S30S6."
+  },
+  "contractual_data": {
+    "issue_date": "2026-03-16",
+    "maturity_date": "2026-09-30",
+    "monthly_issue_rate": "0.0253",
+    "reference_face_value": "100",
+    "currency": "ARS",
+    "rate_format": "DECIMAL",
+    "day_count_convention": "30/360_TREASURY",
+    "annualization_basis_days": 360,
+    "conventional_month_days": 30
+  },
+  "contractual_source": {
+    "source_id": "AR-TREASURY-ISSUANCE",
+    "publisher": "Ministerio de Economía de la Nación",
+    "organization": "Secretaría de Finanzas",
+    "dataset": "Colocaciones de Títulos Públicos",
+    "filename": "colocaciones_30-06-26_a_publicar.xlsx",
+    "resolution": {
+      "type": "Auction Resolution",
+      "identifier": "13/2026"
+    },
+    "retrieved_from": "https://www.argentina.gob.ar/economia/finanzas/suscripcion",
+    "retrieval_date": null,
+    "source_location": null
+  },
+  "market_data": {
+    "valuation_date": null,
+    "settlement_convention": "T+1",
+    "market_price": null,
+    "market_source": "PENDING",
+    "quote_type": null,
+    "price_timestamp": null,
+    "price_basis": "ARS_PER_VN_100"
+  },
+  "methodology": {
+    "research_id": "R-001",
+    "maturity_value_formula": "VPV = VNO * (1 + monthly_issue_rate) ^ (days_30_360 / 30)",
+    "day_count_method": "Treasury-adapted 30/360 with explicit February month-end adjustment",
+    "precision_policy": "No intermediate rounding; source-published and recalculated values remain distinct."
+  },
+  "expected_results": {
+    "maturity_value": "117.53562589582242",
+    "official_maturity_value": null,
+    "recalculated_full_precision_maturity_value": null,
+    "reference_workbook_recalculated_maturity_value": "117.53562589582242",
+    "display_or_validation_maturity_value": null,
+    "holding_period_return": null,
+    "tna": null,
+    "tea": null,
+    "profit_per_vn100": null
+  },
+  "validation": {
+    "contractual_data_status": "Validated",
+    "maturity_value_status": "Validated",
+    "market_data_status": "Pending",
+    "yield_metrics_status": "Pending",
+    "duration_status": "Not Applicable",
+    "excel_reference": "examples/01_calculators/Calculadora de letras 17.07.26.xlsx",
+    "iamc_reference": null,
+    "treasury_reference": "https://www.argentina.gob.ar/noticias/metodologia-de-calculo-para-la-letra-capitalizable-en-pesos",
+    "validation_stage": "Contractual Data and Maturity Value Verified"
+  }
+}

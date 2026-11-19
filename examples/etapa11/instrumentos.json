@@ -1,0 +1,91 @@
+{
+  "X29E7": {
+    "iamc": {
+      "indice": {
+        "tipo": "CER",
+        "rezago_habiles": 10,
+        "fuente": "Resolución Conjunta 48/2026, art. 2 (https://www.boletinoficial.gob.ar/detalleAviso/primera/345901/20260813); CER inicial del 2026-07-31, BCRA serie 3540 (https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/tas5_ser.txt)",
+        "valor_inicial": "815.43451086916"
+      }
+    }
+  },
+  "X30N6": {
+    "iamc": {
+      "indice": {
+        "tipo": "CER",
+        "rezago_habiles": 10,
+        "fuente": "Resolución Conjunta 63/2025, art. 4 (https://www.boletinoficial.gob.ar/detalleAviso/primera/336185/20251215); CER inicial del 2025-11-28, BCRA serie 3540 (https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/tas5_ser.txt)",
+        "valor_inicial": "659.67889566652"
+      }
+    }
+  },
+  "TZXM7": {
+    "iamc": {
+      "indice": {
+        "tipo": "CER",
+        "rezago_habiles": 10,
+        "fuente": "Resolución Conjunta 27/2024, art. 6 (https://www.boletinoficial.gob.ar/detalleAviso/primera/307639/20240517); CER inicial del 2024-05-06, BCRA serie 3540 (https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/tas5_ser.txt)",
+        "valor_inicial": "361.31760345721"
+      }
+    }
+  },
+  "TZV28": {
+    "iamc": {
+      "indice": {
+        "tipo": "A3500",
+        "rezago_habiles": 3,
+        "fuente": "Resolución Conjunta 16/2026, art. 4 (https://www.boletinoficial.gob.ar/detalleAviso/primera/340193/20260331)"
+      }
+    }
+  },
+  "BAM27": {
+    "iamc": {
+      "ticker": "BAM27",
+      "grupo": "tp",
+      "pagos_manuales": {
+        "fuente": "Avisos de la Municipalidad de Córdoba publicados por MAE/A3, servicios 1 a 6, en el mismo orden que los pagos: https://mercadoabierto.sharepoint.com/:b:/s/mae-archivos-publicos/EQYTh4ru6JZDvz2PfWq1GHgBrrNFDDgARTjfTuzLTq2mOA | https://mercadoabierto.sharepoint.com/:b:/s/mae-archivos-publicos/IQD6iK1uLm62SrAkGVs-Z_LOAT7zlIwUI-LY3q_e_SEOj98 | https://mercadoabierto.sharepoint.com/:b:/s/mae-archivos-publicos/IQA1rFldm2xKQq0N82z5ACfrAclCYFlv5TbZeCpk1Jr8jDE | https://mercadoabierto.sharepoint.com/:b:/s/mae-archivos-publicos/IQCx1NgSkAKITpwVDU-wdPDVAa5nMrJslbX50Z1kM3pljgU | https://mercadoabierto.sharepoint.com/:b:/s/mae-archivos-publicos/IQD-uF1Y1HXwRL9mHXcFU8QMAY-qPfIuRBGS2y5-f3uDYA8 | https://mercadoabierto.sharepoint.com/:b:/s/mae-archivos-publicos/IQBtUVDFXGiVQadqDpogqSIHAY6mVryApfCGdA27cAEufHw. Importes brutos por 100 VN originales a cuatro decimales.",
+        "pagos": [
+          ["2025-06-26", "0", "9.7760"],
+          ["2025-09-26", "0", "12.4089"],
+          ["2025-12-26", "0", "11.9149"],
+          ["2026-03-26", "0", "9.3570"],
+          ["2026-06-26", "0", "7.4124"],
+          ["2026-09-28", "50", "7.1865"]
+        ]
+      }
+    },
+    "revision_contractual": {
+      "indice": {
+        "tipo": "TAMAR",
+        "rezago_habiles": 10,
+        "fuente": "Boletín Municipal de Córdoba, Anexo de condiciones de los Títulos de Deuda Públicos Garantizados 2025 Serie I, págs. 22 a 25 (https://static01.cordoba.gob.ar/boe/boletines/boletin_2025_00000908.pdf) y condiciones definitivas (https://static01.cordoba.gob.ar/boe/boletines/boletin_2025_00000909.pdf). Promedio aritmético de la TAMAR diaria BCRA de bancos privados, desde 10 días hábiles antes del inicio del devengamiento inclusive hasta 10 días hábiles antes de la fecha de pago exclusive, más 5,50 puntos porcentuales. Base 30/360 y calendario bancario de Córdoba y CABA."
+      },
+      "observaciones": "El motor excluye el inicio e incluye el fin de la ventana contractual y promedia sobre días corridos. El sexto servicio devengó hasta el 2026-09-26 y se pagó el 2026-09-28. El bruto oficial de 57,1865 supera el cobro de control de 57,0895 en 0,0970 por 100 VN. El aviso no identifica deducciones."
+    }
+  },
+  "RVS1O": {
+    "iamc": {
+      "ticker": "RVS1O",
+      "grupo": "on",
+      "pagos_manuales": {
+        "fuente": "Avisos de River Plate publicados en CNV, servicios 1 a 6, en el mismo orden que los pagos: https://aif2.cnv.gov.ar/presentations/publicview/5435ad14-65cd-48a1-9bb3-a847aee34205 (rectificativo) | https://aif2.cnv.gov.ar/presentations/publicview/57b1e22c-5a28-417f-b7b1-9ed6d57e2756 (aviso de la segunda renta y primera amortización) | https://aif2.cnv.gov.ar/presentations/publicview/9c89c4d8-28c5-4e47-9cbb-2a77c5a0bfe7 | https://aif2.cnv.gov.ar/presentations/publicview/0771f9bd-315b-4e9c-8264-f348fe8342d3 | https://aif2.cnv.gov.ar/presentations/publicview/4094b957-7374-4e24-9b32-bba80ab08e5f | https://aif2.cnv.gov.ar/presentations/publicview/a3640028-6343-4a9d-a995-1f127b91d77f. Importes brutos por 100 VN originales a cuatro decimales. La primera renta se normalizó sobre el VN original de ARS 12.000 millones.",
+        "pagos": [
+          ["2025-05-27", "0", "8.8876"],
+          ["2025-08-27", "25", "10.0387"],
+          ["2025-11-27", "0", "10.3599"],
+          ["2026-02-27", "25", "6.6818"],
+          ["2026-05-27", "0", "3.7364"],
+          ["2026-08-27", "25", "3.3402"]
+        ]
+      }
+    },
+    "revision_contractual": {
+      "indice": {
+        "tipo": "TAMAR",
+        "rezago_habiles": 7,
+        "fuente": "Club Atlético River Plate, Aviso de Suscripción Serie I, puntos 18 a 22 y 27 (https://content-us-7.content-cms.com/8ba19f21-9a97-4525-8886-f54d823a5cea/dxresources/c68d/c68dcf7c-e23d-4664-89c7-d0881a743eff.pdf) y prospecto en CNV (https://aif2.cnv.gov.ar/presentations/publicview/32bb78fe-af32-49c3-a3cb-81625d4455d8). Promedio aritmético de la TAMAR diaria BCRA de bancos privados, desde 7 días hábiles antes del inicio del devengamiento inclusive hasta 7 días hábiles antes de la fecha de pago exclusive, más 3,89 puntos porcentuales. Piso de 0% sobre la tasa total, base real/365 y devengamiento adicional si se corre una fecha que coincide con amortización."
+      },
+      "observaciones": "El motor excluye el inicio e incluye el fin de la ventana contractual, promedia sobre días corridos y no aplica el piso de 0%. El bruto oficial del 2026-08-27 de 28,3402 supera el cobro de control de 28,2952 en 0,0450 por 100 VN. El aviso no identifica deducciones."
+    }
+  }
+}

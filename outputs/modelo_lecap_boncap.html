@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelo LECAP / BONCAP — Tasas y Duration</title>
+<style>
+  :root{
+    --surface-0:#f4f3f0; --surface-1:#fcfcfb; --surface-2:#ffffff;
+    --border:#e2e0da; --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#8a8880;
+    --series-1:#2a78d6; --series-2:#eb6834; --good:#008300; --grid:#eceae5;
+    --chip:#eef4fc; --chip-ink:#1c5cab;
+  }
+  [data-theme="dark"]{
+    --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232320;
+    --border:#33322e; --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#8f8d84;
+    --series-1:#3987e5; --series-2:#d95926; --good:#3aa53a; --grid:#2a2a27;
+    --chip:#152a44; --chip-ink:#86b6ef;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    background:var(--surface-0);color:var(--text-primary);font-size:14px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+  header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  h1{font-size:22px;margin:0 0 4px}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary);
+    margin:28px 0 12px;font-weight:700}
+  .sub{color:var(--text-secondary);font-size:13px;margin:0}
+  .banner{background:var(--chip);color:var(--chip-ink);border:1px solid var(--border);
+    border-radius:10px;padding:10px 14px;font-size:12.5px;margin:16px 0 4px}
+  .banner b{color:var(--chip-ink)}
+  .card{background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:18px}
+  .grid2{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  label{display:block;font-size:12px;color:var(--text-secondary);margin:0 0 4px}
+  .field{margin-bottom:11px}
+  input,select{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;
+    background:var(--surface-2);color:var(--text-primary);font-size:13.5px;font-family:inherit}
+  input:focus,select:focus{outline:2px solid var(--series-1);outline-offset:0;border-color:transparent}
+  .out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tile{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:11px 13px}
+  .tile .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .tile .v{font-size:19px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+  .tile.wide{grid-column:1/-1}
+  .v.blue{color:var(--series-1)} .v.good{color:var(--good)}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th,td{padding:8px 9px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-secondary);
+    cursor:pointer;user-select:none;position:sticky;top:0;background:var(--surface-1)}
+  th.active{color:var(--series-1)}
+  tbody tr{cursor:pointer}
+  tbody tr:hover{background:var(--chip)}
+  tbody tr.sel{background:var(--chip);box-shadow:inset 3px 0 0 var(--series-1)}
+  tbody tr.pendingcalc{cursor:default;color:var(--text-secondary);background:var(--surface-0)}
+  tbody tr.pendingcalc:hover{background:var(--surface-0)}
+  .tag{font-size:10.5px;padding:1px 7px;border-radius:20px;border:1px solid var(--border);color:var(--text-secondary)}
+  .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  button.toggle{background:var(--surface-2);border:1px solid var(--border);color:var(--text-primary);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12.5px}
+  button.toggle.on{background:var(--series-1);border-color:var(--series-1);color:#fff}
+  .chartwrap{overflow-x:auto}
+  svg text{font-family:inherit}
+  .foot{color:var(--muted);font-size:12px;margin-top:10px}
+  .foot code{background:var(--surface-2);padding:1px 5px;border-radius:5px;border:1px solid var(--border)}
+  a{color:var(--series-1)}
+  .themebtn{background:var(--surface-2);border:1px solid var(--border);color:var(--text-primary);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12.5px}
+  .note{font-size:12px;color:var(--text-secondary)}
+  .status{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;background:var(--chip);color:var(--chip-ink);border:1px solid var(--border)}
+  .state{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:20px;border:1px solid var(--border);white-space:nowrap}
+  .state.active{color:var(--good)}
+  .state.pending{color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Modelo LECAP / BONCAP</h1>
+      <p class="sub">Tasa efectiva al vto (HPR), TEM, TEA, TNA, Duration y Modified Duration · liquidación T+1 (24 h) · tasas ACT/365 (IAMC) · VPV y Duration 30/360</p>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="themebtn" href="/futures" style="text-decoration:none">Futuros de dólar →</a>
+      <button class="themebtn" id="themebtn">◐ Tema</button>
+    </div>
+  </header>
+
+  <div class="banner">
+    <b>Estado de validación:</b> <b>HPR, TNA, TEA y TEM</b> siguen la metodología oficial del glosario IAMC (R-002/R-003/R-004). La <b>TNA = TEM·12</b> (nominal anual con capitalización mensual) y la <b>TEA/TIREA = (1+HPR)^(365/D)−1</b> con <b>D = días corridos</b> (ACT/365), reconciliadas contra el informe IAMC (S16O6 y T30J7, 10-ago-2026). La anualización simple 30/360 anterior daba tasas más altas y quedó desaprobada. Una tasa corriente solo se calcula con un precio A3 T+1 cuya fecha de mercado coincida con la fecha seleccionada. El resultado histórico de S14G6 cercano a 258,44% queda desaprobado por haber mezclado fechas. <b>VPV</b>, <b>Duration Macaulay</b> y la fórmula de <b>Modified Duration</b> para un único pago mantienen sus alcances documentados (R-001/R-005).<br><span class="status">Documentación y metodología sincronizadas: miércoles 12 de agosto de 2026.</span>
+  </div>
+
+  <!-- ============ CALCULADORA ============ -->
+  <h2>Calculadora</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="field"><label>Instrumento</label>
+        <select id="pick"></select></div>
+      <div class="field"><label>Fecha de emisión</label><input type="date" id="issue"></div>
+      <div class="field"><label>Fecha de vencimiento</label><input type="date" id="maturity"></div>
+      <div class="field"><label>TEM de emisión (tasa licitada) %</label><input type="number" step="0.001" id="tem"></div>
+      <div class="field"><label>Fecha de compra / negociación</label><input type="date" id="trade"></div>
+      <div class="field"><label>Precio de compra (ARS c/ 100 VN)</label><input type="number" step="0.001" id="price"><div class="note" id="calcpxstatus" style="margin-top:4px"></div></div>
+      <div class="field"><label>Compounding <i>m</i> para Modified Duration (12 = mensual/TEM · 1 = anual/TEA)</label>
+        <input type="number" step="1" min="1" id="mfreq" value="12"></div>
+    </div>
+
+    <div>
+      <div class="out">
+        <div class="tile wide"><div class="k">VPV calculado (ARS c/100 VNO) · prototipo R-001</div><div class="v blue" id="o_vpv">—</div></div>
+        <div class="tile"><div class="k">Fecha de liquidación (T+1)</div><div class="v" id="o_settle" style="font-size:15px">—</div></div>
+        <div class="tile"><div class="k">Días al vto (corridos, desde liq.)</div><div class="v" id="o_days" style="font-size:15px">—</div></div>
+        <div class="tile"><div class="k">Tasa efectiva al vto (HPR)</div><div class="v good" id="o_hpr">—</div></div>
+        <div class="tile"><div class="k">TEM (mensual, del comprador)</div><div class="v" id="o_tem">—</div></div>
+        <div class="tile"><div class="k">TEA (efectiva anual)</div><div class="v" id="o_tea">—</div></div>
+        <div class="tile"><div class="k">TNA (nominal anual)</div><div class="v" id="o_tna">—</div></div>
+        <div class="tile"><div class="k">Duration (Macaulay, años)</div><div class="v" id="o_mac">—</div></div>
+        <div class="tile"><div class="k">Modified Duration</div><div class="v" id="o_mdur">—</div></div>
+      </div>
+      <p class="foot">Ganancia al vto: <b id="o_gain">—</b> por cada 100 VN. Plazo original: <b id="o_life">—</b> días (30/360).</p>
+    </div>
+  </div>
+
+  <!-- ============ CURVA ============ -->
+  <h2>Curva de rendimientos</h2>
+  <div class="card">
+    <div class="toolbar">
+      <span class="note" style="margin-right:6px">Métrica:</span>
+      <button class="toggle on" data-metric="tea">TEA</button>
+      <button class="toggle" data-metric="tna">TNA</button>
+      <button class="toggle" data-metric="temY">TEM</button>
+      <button class="toggle" data-metric="hpr">HPR al vto</button>
+    </div>
+    <div class="chartwrap"><svg id="chart" width="1080" height="360" role="img" aria-label="Curva de rendimientos"></svg></div>
+    <p class="note" id="chartcap"></p>
+  </div>
+
+  <!-- ============ TABLA ============ -->
+  <h2>Comparativa de instrumentos</h2>
+  <div class="card" style="margin-bottom:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <button class="toggle on" id="refreshbtn">↻ Actualizar precios (A3 / SQLite)</button>
+    <label style="margin:0">Precio:
+      <select id="basis" style="width:auto;display:inline-block;margin-left:4px">
+        <option value="last">Último operado</option>
+        <option value="close">Cierre</option>
+      </select></label>
+    <label style="margin:0">Fecha de compra:
+      <input type="date" id="tradeTbl" style="width:auto;display:inline-block;margin-left:4px"></label>
+    <span class="note" id="pxstatus" style="margin-left:auto"></span>
+  </div>
+  <p class="sub" style="margin-bottom:5px">Clic en una fila para cargarla en la calculadora. Datos contractuales actualizados con el Informe Diario Títulos Públicos (BYMA/IAMC) del 10-Aug-2026; cotizaciones corrientes A3 T+1 leídas desde la base SQLite local. Los snapshots históricos se conservan con su fecha, pero no producen tasas para otra fecha.</p>
+  <p class="note" id="lifecyclestatus" style="margin:0 0 8px">Cargando estado de nuevos instrumentos del Tesoro…</p>
+  <p class="note" style="margin:0 0 8px">La vista corriente excluye automáticamente toda especie cuyo vencimiento sea igual o anterior a la fecha local. El registro histórico se conserva.</p>
+  <div class="card" style="padding:6px 6px 2px">
+    <div style="overflow:auto;max-height:520px">
+      <table id="tbl"><thead><tr>
+        <th data-c="ticker">Especie</th>
+        <th data-c="type">Tipo</th>
+        <th data-c="maturity">Vto</th>
+        <th data-c="tem_issue">TEM emis.</th>
+        <th data-c="price">Precio</th>
+        <th data-c="price_date">Fecha precio</th>
+        <th data-c="vpv">VPV</th>
+        <th data-c="hpr">HPR vto</th>
+        <th data-c="temY">TEM</th>
+        <th data-c="tea">TEA</th>
+        <th data-c="tna">TNA</th>
+        <th data-c="mac">Dur (a)</th>
+        <th data-c="mdur">MDur</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <h2>Altas del Tesoro Nacional</h2>
+  <p class="sub" style="margin-bottom:8px">Seguimiento automático de Letras y Bonos publicados por la Secretaría de Finanzas. Solo se incorporan instrumentos del Tesoro Nacional; una aparición en A3 habilita su estado operativo, pero no valida una metodología ni completa datos contractuales faltantes.</p>
+  <div class="card" style="padding:6px 6px 2px">
+    <div style="overflow:auto;max-height:360px">
+      <table id="treasuryUniverse"><thead><tr>
+        <th>Especie</th>
+        <th>Familia</th>
+        <th>Vto</th>
+        <th>Alta oficial</th>
+        <th>Mercado secundario</th>
+        <th>Cálculo</th>
+        <th>Fuente</th>
+      </tr></thead><tbody><tr><td colspan="7">Cargando altas oficiales…</td></tr></tbody></table>
+    </div>
+  </div>
+
+  <p class="foot" style="margin-top:22px">
+    <b>Metodología.</b> VPV = 100·(1+TEM<sub>emis</sub>)<sup>(DAYS360(emisión,vto)/360)·12</sup> ·
+    HPR = VPV/Precio − 1 · TEA/TIREA = (1+HPR)<sup>365/D</sup>−1 · TEM = (1+TEA)<sup>1/12</sup>−1 · TNA = TEM·12 ·
+    con D = días corridos (liquidación→vto, ACT/365) · Macaulay = DAYS360(liq,vto)/360 años (30/360, R-005) ·
+    Modified = Macaulay/(1+(1+TEA)<sup>1/m</sup>−1). Liquidación T+1 = día hábil siguiente (calendario de feriados AR, editable en el código).
+    <br><b>Fuentes:</b>
+    <a href="https://www.argentina.gob.ar/noticias/metodologia-de-calculo-para-la-letra-capitalizable-en-pesos" target="_blank" rel="noopener">Fórmula general publicada por el Tesoro (VPV)</a> ·
+    <a href="https://www.iamc.com.ar/Informe/GlosarioMetodologicodeRentaFija/" target="_blank" rel="noopener">Glosario metodológico IAMC (TNA, TEA y TEM)</a> ·
+    Informe Diario Títulos Públicos (BYMA/IAMC) 10-Aug-2026 ·
+    metodología de tasas: R-002/003/004; precio corriente: A3 T+1 con fecha alineada.
+    <span class="status">Duration R-005: validada para el alcance de prototipo de un único pago; sin aprobación de producción.</span>
+  </p>
+</div>
+
+<script>
+// ---------- Datos contractuales oficiales (actualizados con Informe Diario 10-Aug-2026) ----------
+const DATA = [
+ {ticker:"S31L6",type:"LECAP", issue:"2026-01-30",maturity:"2026-07-31",tem_issue:0.0275,price:117.1,price_date:"2026-07-17",price_source:"IAMC 17-Jul-2026",settlement_date:null},
+ {ticker:"S14G6",type:"LECAP", issue:"2026-04-17",maturity:"2026-08-14",tem_issue:0.0200,price:107.8,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"S31G6",type:"LECAP", issue:"2025-11-10",maturity:"2026-08-31",tem_issue:0.0250,price:125.5,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"S15S6",type:"LECAP", issue:"2026-05-29",maturity:"2026-09-15",tem_issue:0.0199,price:104.8,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"S30S6",type:"LECAP", issue:"2026-03-16",maturity:"2026-09-30",tem_issue:0.0253,price:113.7,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"S16O6",type:"LECAP", issue:"2026-07-31",maturity:"2026-10-16",tem_issue:0.0205,price:100.7,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"S30O6",type:"LECAP", issue:"2025-10-31",maturity:"2026-10-30",tem_issue:0.0255,price:128.3,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"S13N6",type:"LECAP", issue:"2026-06-30",maturity:"2026-11-13",tem_issue:0.0210,price:102.7,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"S30N6",type:"LECAP", issue:"2025-12-15",maturity:"2026-11-30",tem_issue:0.0230,price:120.3,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"T15E7",type:"BONCAP",issue:"2025-01-31",maturity:"2027-01-15",tem_issue:0.0205,price:144.4,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"T30A7",type:"BONCAP",issue:"2025-10-31",maturity:"2027-04-30",tem_issue:0.0255,price:131.2,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"T31Y7",type:"BONCAP",issue:"2025-12-15",maturity:"2027-05-31",tem_issue:0.0240,price:123.5,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+ {ticker:"T30J7",type:"BONCAP",issue:"2026-01-16",maturity:"2027-06-30",tem_issue:0.0258,price:125.7,price_date:"2026-08-10",price_source:"IAMC 10-Aug-2026",settlement_date:null},
+];
+// Feriados AR (editables) — sólo afectan el día hábil de liquidación T+1
+// Los feriados y la fecha de liquidación los resuelve el servicio local
+// (src/local_dashboard/market_calendar.py). Este archivo ya no los duplica.
+function todayISO(){const d=new Date();return new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())).toISOString().slice(0,10);}
+let DEFAULT_TRADE = todayISO();       // fecha de compra del usuario; independiente de la fecha de observación del precio
+let PRICE_BASIS = "last";             // selección explícita: "last" o "close", sin sustitución silenciosa
+const EMBEDDED_MARKET_DATA = Object.fromEntries(DATA.map(d=>[d.ticker,{
+  price:d.price,price_date:d.price_date,price_source:d.price_source,settlement_date:d.settlement_date
+}]));
+const LOCAL_QUOTES_ENDPOINT = "/api/market/quotes";
+const LOCAL_LIFECYCLE_ENDPOINT = "/api/lifecycle";
+const LOCAL_METRICS_ENDPOINT = "/api/metrics";
+const REFRESH_INTERVAL_MS = 15*60*1000;
+let TREASURY_UNIVERSE = [];
+
+// ---------- Núcleo de cálculo ----------
+function parseD(s){const [y,m,d]=s.split('-').map(Number);return new Date(Date.UTC(y,m-1,d));}
+function fmtD(dt){return dt.toISOString().slice(0,10);}
+function fmtDShort(s){if(!s)return '—';const [y,m,d]=s.split('-');return `${d}/${m}/${y.slice(2)}`;}
+// ---------- Métricas: las calcula el motor (Decimal), no este archivo ----------
+// VPV (R-001), HPR (R-002), TNA (R-003), TEA/TEM (R-004) y Duration (R-005) se
+// piden a /api/metrics. Acá no hay ninguna fórmula financiera: el servicio es la
+// única implementación. Los Number() son sólo para mostrar y ordenar; el valor
+// exacto es el string Decimal que devuelve el servicio.
+const num=v=>(v===null||v===undefined)?NaN:Number(v);
+const METRICS_DOWN={settle:null,life:NaN,res:NaN,resAct:NaN,vpv:NaN,hpr:NaN,temY:NaN,tea:NaN,tna:NaN,mac:NaN,mdur:NaN,
+  yield_available:false,reason:"el servicio local no respondió",service_down:true};
+async function fetchMetrics(issue,maturity,temIssue,price,trade,m,priceDate,providerSettlementDate=null){
+  const q=new URLSearchParams({issue,maturity,tem:String(temIssue),price:String(price),trade,m:String(m)});
+  if(priceDate)q.set('price_date',priceDate);
+  if(providerSettlementDate)q.set('settlement',providerSettlementDate);
+  try{
+    const r=await fetch(`${LOCAL_METRICS_ENDPOINT}?${q.toString()}`,{cache:"no-store"});
+    if(!r.ok)return {...METRICS_DOWN,reason:"el servicio local no pudo calcular con esos datos"};
+    const j=await r.json();
+    return {settle:j.settlement_date,life:num(j.life_days_30_360),res:num(j.residual_days_30_360),
+      resAct:num(j.residual_days_actual),vpv:num(j.maturity_value),hpr:num(j.holding_period_return),
+      temY:num(j.tem),tea:num(j.tea),tna:num(j.tna),mac:num(j.macaulay_years),mdur:num(j.modified_duration),
+      yield_available:Boolean(j.yield_available),reason:j.yield_unavailable_reason,
+      settlement_source:j.settlement_source,calendar_status:j.settlement_calendar_status,service_down:false};
+  }catch(e){return {...METRICS_DOWN};}
+}
+const pct=x=>Number.isFinite(x)?(x*100).toFixed(2)+"%":"—";
+const n2=x=>Number.isFinite(x)?x.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}):"—";
+const n3=x=>Number.isFinite(x)?x.toLocaleString('es-AR',{minimumFractionDigits:3,maximumFractionDigits:3}):"—";
+
+// ---------- Calculadora ----------
+const $=id=>document.getElementById(id);
+let CALCULATOR_PRICE_DATE=null;
+let CALCULATOR_PRICE_SOURCE="";
+function isCurrentMaturity(maturity,asOf=todayISO()){return Boolean(maturity)&&maturity>asOf;}
+function currentContractData(){return DATA.filter(d=>isCurrentMaturity(d.maturity));}
+function fillPicker(preferredTicker=null){const s=$('pick');
+  const previous=preferredTicker||(s.value!==''&&DATA[+s.value]?DATA[+s.value].ticker:null);s.innerHTML='';
+  const current=currentContractData();
+  current.forEach(d=>{const i=DATA.indexOf(d),o=document.createElement('option');
+    o.value=i;o.textContent=`${d.ticker} — ${d.type} · vto ${fmtDShort(d.maturity)}`;s.appendChild(o);});
+  const selected=current.find(d=>d.ticker===previous)||current[0];
+  if(!selected)return -1;
+  const index=DATA.indexOf(selected);s.value=String(index);return index;
+}
+function loadRow(i){const d=DATA[i];if(!d||!isCurrentMaturity(d.maturity))return;
+  $('issue').value=d.issue;$('maturity').value=d.maturity;
+  CALCULATOR_PRICE_DATE=d.price_date;CALCULATOR_PRICE_SOURCE=d.price_source;
+  $('tem').value=(d.tem_issue*100).toFixed(3);$('price').value=d.price;$('trade').value=DEFAULT_TRADE;calc();
+  markSel(d.ticker);$('pick').value=i;}
+async function calc(){
+  const issue=$('issue').value,maturity=$('maturity').value,trade=$('trade').value;
+  const tem=parseFloat($('tem').value)/100,price=parseFloat($('price').value),m=parseInt($('mfreq').value)||12;
+  if(!issue||!maturity||!trade||isNaN(tem)||isNaN(price)||price<=0)return;
+  const selected=DATA[+$('pick').value];
+  const settlementDate=selected&&selected.price_date===CALCULATOR_PRICE_DATE?selected.settlement_date:null;
+  const r=await fetchMetrics(issue,maturity,tem,price,trade,m,CALCULATOR_PRICE_DATE,settlementDate);
+  $('o_vpv').textContent=n3(r.vpv);
+  $('o_settle').textContent=fmtDShort(r.settle);
+  $('o_days').textContent=r.resAct;
+  $('o_hpr').textContent=pct(r.hpr);
+  $('o_tem').textContent=pct(r.temY);
+  $('o_tea').textContent=pct(r.tea);
+  $('o_tna').textContent=pct(r.tna);
+  $('o_mac').textContent=Number.isFinite(r.mac)?r.mac.toFixed(3):"—";
+  $('o_mdur').textContent=Number.isFinite(r.mdur)?r.mdur.toFixed(3):"—";
+  $('o_gain').textContent=r.yield_available?n2(r.vpv-price)+" ARS":"—";
+  $('o_life').textContent=r.life;
+  $('calcpxstatus').textContent=r.service_down?
+    `Sin servicio local: el cálculo lo hace el motor y no está disponible. ${r.reason||''}`:
+    r.yield_available?
+    `Precio ${CALCULATOR_PRICE_SOURCE||'manual'} observado el ${fmtDateLong(CALCULATOR_PRICE_DATE)}.`:
+    (CALCULATOR_PRICE_DATE!==trade?
+      `Precio observado el ${fmtDateLong(CALCULATOR_PRICE_DATE)}; no coincide con ${fmtDateLong(trade)}. Tasas no calculadas.`:
+      'La liquidación no es anterior al vencimiento. Tasas no calculadas.');
+}
+let CALC_TIMER=null;
+function calcSoon(){clearTimeout(CALC_TIMER);CALC_TIMER=setTimeout(()=>{calc();},150);}
+['issue','maturity','tem','trade','mfreq'].forEach(id=>$(id).addEventListener('input',calcSoon));
+$('price').addEventListener('input',()=>{CALCULATOR_PRICE_DATE=$('trade').value||null;CALCULATOR_PRICE_SOURCE='manual';calcSoon();});
+$('pick').addEventListener('change',e=>loadRow(+e.target.value));
+
+// ---------- Tabla ----------
+let sortC='maturity',sortAsc=true;
+async function computeAll(trade){const m=parseInt($('mfreq').value)||12;
+  return Promise.all(currentContractData().map(async d=>({...d,
+    ...await fetchMetrics(d.issue,d.maturity,d.tem_issue,d.price,trade,m,d.price_date,d.settlement_date)})));}
+// Resultados del motor para la tabla y el gráfico. renderTable() y drawChart()
+// leen este cache en lugar de recalcular, para no pedir dos veces lo mismo.
+let COMPUTED=[];
+async function recompute(trade){COMPUTED=await computeAll(trade);}
+function lifecycleTicker(item){return String(item.matched_ticker||item.official_ticker||'').trim().toUpperCase();}
+function activeWithoutContractData(){const known=new Set(currentContractData().map(d=>d.ticker));
+  return TREASURY_UNIVERSE.filter(x=>x.lifecycle_status==='ACTIVE_FOR_ANALYSIS'&&
+    ['LECAP','BONCAP'].includes(x.instrument_family)&&lifecycleTicker(x)&&!known.has(lifecycleTicker(x)));
+}
+function markSel(tk){document.querySelectorAll('#tbl tbody tr').forEach(tr=>tr.classList.toggle('sel',tr.dataset.tk===tk));}
+function renderTable(){
+  const rows=COMPUTED.slice();
+  rows.sort((a,b)=>{let x=a[sortC],y=b[sortC];if(sortC==='ticker'||sortC==='type'||sortC==='maturity'||sortC==='price_date'){return sortAsc?(''+x).localeCompare(y):(''+y).localeCompare(x);}x=Number.isFinite(x)?x:Number.POSITIVE_INFINITY;y=Number.isFinite(y)?y:Number.POSITIVE_INFINITY;return sortAsc?x-y:y-x;});
+  const tb=document.querySelector('#tbl tbody');tb.innerHTML='';
+  rows.forEach(r=>{const tr=document.createElement('tr');tr.dataset.tk=r.ticker;
+    if(!r.yield_available)tr.title=`Precio histórico del ${fmtDateLong(r.price_date)}: tasas deshabilitadas para ${fmtDateLong(DEFAULT_TRADE)}.`;
+    tr.innerHTML=`<td><b>${r.ticker}</b></td><td><span class="tag">${r.type}</span></td>
+      <td>${fmtDShort(r.maturity)}</td><td>${pct(r.tem_issue)}</td><td>${n2(r.price)}</td><td>${fmtDShort(r.price_date)}</td>
+      <td>${n2(r.vpv)}</td><td>${pct(r.hpr)}</td><td>${pct(r.temY)}</td><td>${pct(r.tea)}</td>
+      <td>${pct(r.tna)}</td><td>${r.mac.toFixed(2)}</td><td>${Number.isFinite(r.mdur)?r.mdur.toFixed(2):'—'}</td>`;
+    tr.addEventListener('click',()=>{const i=DATA.findIndex(d=>d.ticker===r.ticker);loadRow(i);
+      document.querySelector('.grid2').scrollIntoView({behavior:'smooth',block:'center'});});
+    tb.appendChild(tr);});
+  activeWithoutContractData().forEach(item=>{const tr=document.createElement('tr');tr.className='pendingcalc';
+    tr.dataset.tk=lifecycleTicker(item);tr.title='Visible en A3; faltan datos contractuales completos para calcular sin inferencias.';
+    const values=[lifecycleTicker(item),item.instrument_family,item.maturity_date?fmtDShort(item.maturity_date):'—','Pendiente','—','—','—','—','—','—','—','—','—'];
+    values.forEach((value,index)=>{const td=document.createElement('td');
+      if(index===0){const strong=document.createElement('b');strong.textContent=value;td.appendChild(strong);}
+      else if(index===1){const tag=document.createElement('span');tag.className='tag';tag.textContent=value;td.appendChild(tag);}
+      else td.textContent=value;tr.appendChild(td);});
+    tb.appendChild(tr);});
+  document.querySelectorAll('#tbl th').forEach(th=>th.classList.toggle('active',th.dataset.c===sortC));
+}
+document.querySelectorAll('#tbl th').forEach(th=>th.addEventListener('click',()=>{
+  const c=th.dataset.c;if(c===sortC)sortAsc=!sortAsc;else{sortC=c;sortAsc=(c==='ticker'||c==='type'||c==='maturity');}renderTable();
+  const cur=$('pick').value;if(cur!=='')markSel(DATA[+cur].ticker);}));
+
+// ---------- Curva (SVG, un eje, una serie) ----------
+let metric='tea';
+const LABELS={tea:'TEA (efectiva anual)',tna:'TNA (nominal anual)',temY:'TEM (mensual)',hpr:'HPR al vencimiento'};
+function drawChart(){
+  const all=COMPUTED;
+  const aligned=all.filter(r=>r.yield_available&&Number.isFinite(r[metric]));
+  const stale=all.length-aligned.length;
+  const omitted=aligned.filter(r=>r.res<10).length;   // omitir vencimientos < ~2 semanas (anualización ruidosa)
+  const rows=aligned.filter(r=>r.res>=10).map(r=>({tk:r.ticker,type:r.type,x:parseD(r.maturity).getTime(),y:r[metric]}))
+    .sort((a,b)=>a.x-b.x);
+  const svg=$('chart');const W=1080,H=360,mL=58,mR=20,mT=18,mB=56;
+  if(!rows.length){svg.innerHTML='<text x="540" y="180" text-anchor="middle" font-size="14" fill="currentColor">Sin precios A3 alineados con la fecha seleccionada.</text>';
+    $('chartcap').textContent=`${LABELS[metric]} · compra ${fmtDShort(DEFAULT_TRADE)} · ${stale} instrumento(s) sin precio de esa fecha.`;return;}
+  const xs=rows.map(r=>r.x),ys=rows.map(r=>r.y);
+  const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
+  const yPad=(ymax-ymin)*0.15||0.01;const y0=Math.max(0,ymin-yPad),y1=ymax+yPad;
+  const px=t=>mL+(t-xmin)/(xmax-xmin)*(W-mL-mR);
+  const py=v=>H-mB-(v-y0)/(y1-y0)*(H-mT-mB);
+  const cs=getComputedStyle(document.body);
+  const c1=cs.getPropertyValue('--series-1').trim(),grid=cs.getPropertyValue('--grid').trim(),
+    ink=cs.getPropertyValue('--text-primary').trim(),ink2=cs.getPropertyValue('--text-secondary').trim(),
+    surf=cs.getPropertyValue('--surface-1').trim();
+  let g='';
+  // y gridlines
+  const ticks=5;
+  let ydec=1;                                   // decimales minimos para que las etiquetas del eje no se repitan
+  while(ydec<4){const seen=new Set();let ok=true;
+    for(let i=0;i<=ticks;i++){const s=((y0+(y1-y0)*i/ticks)*100).toFixed(ydec);if(seen.has(s)){ok=false;break;}seen.add(s);}
+    if(ok)break;ydec++;}
+  for(let i=0;i<=ticks;i++){const v=y0+(y1-y0)*i/ticks;const yy=py(v);
+    g+=`<line x1="${mL}" y1="${yy}" x2="${W-mR}" y2="${yy}" stroke="${grid}" stroke-width="1"/>`;
+    g+=`<text x="${mL-8}" y="${yy+4}" text-anchor="end" font-size="11" fill="${ink2}">${(v*100).toFixed(ydec)}%</text>`;}
+  // x labels (maturity date dd/mm/yy, rotadas para que no se solapen)
+  rows.forEach(r=>{const d=new Date(r.x);
+    const lbl=('0'+d.getUTCDate()).slice(-2)+'/'+('0'+(d.getUTCMonth()+1)).slice(-2)+'/'+String(d.getUTCFullYear()).slice(2);
+    const lx=px(r.x),ly=H-mB+16;
+    g+=`<text x="${lx}" y="${ly}" transform="rotate(-35 ${lx} ${ly})" text-anchor="end" font-size="9.5" fill="${ink2}">${lbl}</text>`;});
+  // line
+  const path=rows.map((r,i)=>(i?'L':'M')+px(r.x)+' '+py(r.y)).join(' ');
+  g+=`<path d="${path}" fill="none" stroke="${c1}" stroke-width="2"/>`;
+  // markers + direct labels
+  rows.forEach(r=>{g+=`<circle cx="${px(r.x)}" cy="${py(r.y)}" r="4.5" fill="${c1}" stroke="${surf}" stroke-width="2">
+     <title>${r.tk} — ${LABELS[metric]}: ${(r.y*100).toFixed(2)}%</title></circle>`;
+    g+=`<text x="${px(r.x)}" y="${py(r.y)-9}" text-anchor="middle" font-size="9.5" fill="${ink2}">${r.tk}</text>`;});
+  svg.innerHTML=g;
+  $('chartcap').textContent=`${LABELS[metric]} por vencimiento · ${rows.length} instrumentos · compra ${fmtDShort(DEFAULT_TRADE)} (liq. T+1)`+(omitted?` · ${omitted} omitido(s) por vencer en <2 semanas.`:`.`)+(stale?` · ${stale} sin precio alineado.`:``);
+}
+document.querySelectorAll('.toggle[data-metric]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.toggle[data-metric]').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  metric=b.dataset.metric;drawChart();}));
+
+// ---------- Tema ----------
+$('themebtn').addEventListener('click',()=>{
+  const t=document.body.getAttribute('data-theme')==='dark'?'':'dark';
+  if(t)document.body.setAttribute('data-theme','dark');else document.body.removeAttribute('data-theme');
+  drawChart();});
+
+// ---------- Datos locales A3 / SQLite ----------
+function setStatus(m){$('pxstatus').textContent=m;}
+async function renderAll(){const current=$('pick').value!==''&&DATA[+$('pick').value]?DATA[+$('pick').value].ticker:null;
+  const selected=fillPicker(current);await recompute(DEFAULT_TRADE);renderTable();drawChart();if(selected>=0)loadRow(selected);}
+function resetEmbeddedSnapshot(){DATA.forEach(d=>{const embedded=EMBEDDED_MARKET_DATA[d.ticker];
+  d.price=embedded.price;d.price_date=embedded.price_date;d.price_source=embedded.price_source;d.settlement_date=embedded.settlement_date;});}
+function isExplicitT1(q){return String(q.term||q.term_code||'').trim()==='001';}
+function contractTickerFromA3(q){const ticker=String(q.ticker||'').trim().toUpperCase();
+  return isExplicitT1(q)&&ticker.endsWith('/24HS')?ticker.slice(0,-5):ticker;}
+function isSupportedA3T1Price(q){return isExplicitT1(q)&&String(q.ticker||'').trim().toUpperCase().endsWith('/24HS');}
+function fmtDateLong(s){if(!s)return "—";const [y,m,d]=String(s).split('-');return y&&m&&d?`${d}/${m}/${y}`:s;}
+function setTradeDateToToday(){DEFAULT_TRADE=todayISO();$('tradeTbl').value=DEFAULT_TRADE;}
+async function refreshPrices(resetTradeDate=false){
+  if(resetTradeDate)setTradeDateToToday();
+  setStatus("Actualizando precios…");
+  resetEmbeddedSnapshot();
+  try{
+    const response=await fetch(LOCAL_QUOTES_ENDPOINT,{cache:"no-store"});
+    if(!response.ok)throw new Error("HTTP");
+    const payload=await response.json();
+    const latestByTicker={};
+    (payload.quotes||[]).filter(isSupportedA3T1Price).forEach(q=>{
+      const contractTicker=contractTickerFromA3(q),current=latestByTicker[contractTicker];
+      if(contractTicker&&(!current||String(q.retrieved_at||'')>String(current.retrieved_at||'')))latestByTicker[contractTicker]=q;
+    });
+    const field=PRICE_BASIS==="last"?"last_price":"close_price";
+    const marketDates=[],retrievedTimes=[];let n=0,missing=0;
+    currentContractData().forEach(d=>{const q=latestByTicker[d.ticker];if(!q)return;
+      const raw=q[field];
+      if(raw===null||raw===undefined||raw===''){missing++;return;}
+      const px=Number(raw);
+      if(Number.isFinite(px)&&px>0){d.price=px;d.price_date=q.market_date||null;d.settlement_date=q.settlement_date||null;
+        d.price_source=`A3 T+1 ${PRICE_BASIS==='last'?'último operado':'cierre'} (${q.ticker})`;n++;
+        if(q.market_date)marketDates.push(q.market_date);if(q.retrieved_at)retrievedTimes.push(q.retrieved_at);}
+      else missing++;
+    });
+    const queryTime=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit',hour12:false});
+    const latestMarketDate=marketDates.length?marketDates.sort().at(-1):null;
+    // UX: al actualizar manualmente, alinear la fecha de compra con la última fecha de precios
+    // disponible (si el sync de hoy aún no corrió). Sin mezclar fechas: precio y compra quedan
+    // en la misma jornada, así se muestran tasas en vez de pantalla vacía. Fallback a hoy si no hay datos.
+    if(resetTradeDate&&latestMarketDate)DEFAULT_TRADE=latestMarketDate;
+    $('tradeTbl').value=DEFAULT_TRADE;
+    const alignedCount=marketDates.filter(m=>m===DEFAULT_TRADE).length;
+    const latestRetrieved=retrievedTimes.length?retrievedTimes.sort().at(-1):null;
+    const retrievedLabel=latestRetrieved?new Date(latestRetrieved).toLocaleString('es-AR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}):"—";
+    const basisLabel=PRICE_BASIS==="last"?"último operado":"cierre";
+    const currentCount=currentContractData().length;
+    const priorDayNote=DEFAULT_TRADE!==todayISO()?` · ⚠ mostrando el último día disponible (${fmtDateLong(DEFAULT_TRADE)}); el sync de hoy aún no trajo precios`:'';
+    setStatus(`✓ Consulta ${queryTime} · observación A3 ${fmtDateLong(latestMarketDate)} · carga SQLite ${retrievedLabel} · fecha de compra ${fmtDateLong(DEFAULT_TRADE)} · ${alignedCount} precios vigentes T+1 (${basisLabel}) · ${n-alignedCount} A3 de otra fecha · ${currentCount-n} snapshots históricos${missing?` · ${missing} sin ${basisLabel}`:''}${priorDayNote}`);
+    renderAll();
+  }catch(e){
+    $('tradeTbl').value=DEFAULT_TRADE;renderAll();
+    const openHint=location.protocol==='file:'?' · abrí el modelo con “Abrir Modelo LECAP BONCAP.command”':'';
+    setStatus(`Fecha de compra ${fmtDateLong(DEFAULT_TRADE)} · precios no actualizados: servicio local/SQLite no disponible${openHint} · snapshots históricos visibles, tasas corrientes deshabilitadas`);
+  }
+}
+function currentTreasuryUniverse(all){const latest=new Map();
+  all.filter(x=>x.origin==='TREASURY_OFFICIAL'&&x.lifecycle_status!=='MATURED'&&
+    (!x.maturity_date||isCurrentMaturity(x.maturity_date))).forEach(item=>{
+      const key=lifecycleTicker(item)||item.source_id;
+      const previous=latest.get(key),rank=String(item.evaluated_at||item.auction_date||'');
+      const previousRank=previous?String(previous.evaluated_at||previous.auction_date||''):'';
+      if(!previous||rank>previousRank)latest.set(key,item);
+    });
+  return [...latest.values()].sort((a,b)=>{
+    const maturity=String(a.maturity_date||'9999-12-31').localeCompare(String(b.maturity_date||'9999-12-31'));
+    return maturity||lifecycleTicker(a).localeCompare(lifecycleTicker(b));
+  });
+}
+function renderTreasuryUniverse(){const tb=document.querySelector('#treasuryUniverse tbody');tb.innerHTML='';
+  if(!TREASURY_UNIVERSE.length){const tr=document.createElement('tr'),td=document.createElement('td');
+    td.colSpan=7;td.textContent='Todavía no hay altas oficiales almacenadas. Se completarán con la sincronización diaria de la Secretaría de Finanzas.';
+    tr.appendChild(td);tb.appendChild(tr);return;}
+  const known=new Set(currentContractData().map(d=>d.ticker));
+  TREASURY_UNIVERSE.forEach(item=>{const tr=document.createElement('tr'),ticker=lifecycleTicker(item);
+    const active=item.lifecycle_status==='ACTIVE_FOR_ANALYSIS';
+    const marketLabel=active?'Visible en A3':item.lifecycle_status==='PENDING_MATCH'?'Identidad pendiente':'Esperando A3';
+    const calculationLabel=known.has(ticker)?'Disponible':
+      (['LECAP','BONCAP'].includes(item.instrument_family)?(active?'Faltan datos contractuales':'Pendiente de activación'):'Fuera del cálculo LECAP/BONCAP');
+    const values=[ticker||'Sin ticker publicado',item.instrument_family||'Sin clasificar',
+      item.maturity_date?fmtDShort(item.maturity_date):'No publicada',fmtDateLong(item.auction_date),marketLabel,calculationLabel];
+    values.forEach((value,index)=>{const td=document.createElement('td');td.textContent=value;
+      if(index===4){td.textContent='';const state=document.createElement('span');state.className=`state ${active?'active':'pending'}`;state.textContent=value;td.appendChild(state);}
+      if(index===5&&item.calculation_eligible===false&&item.calculation_reason){td.title=item.calculation_reason;td.style.color='#96610a';}
+      tr.appendChild(td);});
+    const source=document.createElement('td');
+    if(item.source_url){const link=document.createElement('a');link.href=item.source_url;link.target='_blank';link.rel='noopener';link.textContent='Secretaría';source.appendChild(link);}
+    else source.textContent='—';tr.appendChild(source);tb.appendChild(tr);
+  });
+}
+async function refreshLifecycleStatus(){
+  try{
+    const response=await fetch(LOCAL_LIFECYCLE_ENDPOINT,{cache:"no-store"});
+    if(!response.ok)throw new Error("HTTP");
+    const payload=await response.json();const all=payload.instruments||[];
+    TREASURY_UNIVERSE=currentTreasuryUniverse(all);renderTreasuryUniverse();
+    const active=TREASURY_UNIVERSE.filter(x=>x.lifecycle_status==='ACTIVE_FOR_ANALYSIS');
+    const known=new Set(currentContractData().map(d=>d.ticker));
+    const awaiting=active.map(x=>x.matched_ticker||x.official_ticker).filter(t=>t&&!known.has(t));
+    const pending=TREASURY_UNIVERSE.filter(x=>x.lifecycle_status==='PENDING_SECONDARY_MARKET'||x.lifecycle_status==='PENDING_MATCH').length;
+    $('lifecyclestatus').textContent=`Ciclo de vida corriente: ${currentContractData().length} especie(s) con datos contractuales · ${active.length} alta(s) visible(s) en A3 · ${pending} pendiente(s)`+
+      (awaiting.length?` · ${awaiting.join(', ')} activa(s), esperando datos contractuales completos para entrar al cálculo.`:`.`);
+    renderTable();
+  }catch(e){
+    TREASURY_UNIVERSE=[];renderTreasuryUniverse();renderTable();
+    $('lifecyclestatus').textContent="Estado de nuevos instrumentos del Tesoro no disponible en el servicio local.";
+  }
+}
+async function refreshLocalData(resetTradeDate=false){await Promise.all([refreshPrices(resetTradeDate),refreshLifecycleStatus()]);}
+$('refreshbtn').addEventListener('click',()=>refreshLocalData(true));
+$('basis').addEventListener('change',e=>{PRICE_BASIS=e.target.value;refreshPrices();});
+$('tradeTbl').addEventListener('change',e=>{if(e.target.value){DEFAULT_TRADE=e.target.value;renderAll();}});
+
+// ---------- Init ----------
+$('tradeTbl').value=DEFAULT_TRADE;
+const initialIndex=fillPicker('S31G6');
+(async()=>{await recompute(DEFAULT_TRADE);renderTable();if(initialIndex>=0)loadRow(initialIndex);drawChart();})();
+refreshLocalData(false);
+setInterval(()=>refreshLocalData(false),REFRESH_INTERVAL_MS);
+</script>
+</body>
+</html>

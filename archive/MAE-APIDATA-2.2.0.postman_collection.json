@@ -1,0 +1,572 @@
+{
+	"info": {
+		"_postman_id": "a4df95f0-21f4-4e68-a806-f43058bad8a9",
+		"name": "MAE-APIDATA-2.2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41099157"
+	},
+	"item": [
+		{
+			"name": "MAE-APIDATA-MD",
+			"item": [
+				{
+					"name": "/api/v1/mercado/cotizaciones/rentafija",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MarketData/v1/mercado/cotizaciones/rentafija",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MarketData",
+								"v1",
+								"mercado",
+								"cotizaciones",
+								"rentafija"
+							],
+							"query": [
+								{
+									"key": "segmento",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "plazo",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "moneda",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "ticker",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://apiuat.mae.com.ar/api/v1/mercado/cotizaciones/rentafija?segmento=<string>&plazo=<string>&moneda=<string>&ticker=<string>&pageNumber=<integer>",
+									"protocol": "https",
+									"host": [
+										"apiuat",
+										"mae",
+										"com",
+										"ar"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mercado",
+										"cotizaciones",
+										"rentafija"
+									],
+									"query": [
+										{
+											"key": "segmento",
+											"value": "<string>"
+										},
+										{
+											"key": "plazo",
+											"value": "<string>"
+										},
+										{
+											"key": "moneda",
+											"value": "<string>"
+										},
+										{
+											"key": "ticker",
+											"value": "<string>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/api/v1/mercado/cotizaciones/cauciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MarketData/v1/mercado/cotizaciones/cauciones",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MarketData",
+								"v1",
+								"mercado",
+								"cotizaciones",
+								"cauciones"
+							],
+							"query": [
+								{
+									"key": "segmento",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "plazo",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "moneda",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "ticker",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://apiuat.mae.com.ar/api/v1/mercado/cotizaciones/cauciones?segmento=<string>&plazo=<string>&moneda=<string>&ticker=<string>&pageNumber=<integer>",
+									"protocol": "https",
+									"host": [
+										"apiuat",
+										"mae",
+										"com",
+										"ar"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mercado",
+										"cotizaciones",
+										"cauciones"
+									],
+									"query": [
+										{
+											"key": "segmento",
+											"value": "<string>"
+										},
+										{
+											"key": "plazo",
+											"value": "<string>"
+										},
+										{
+											"key": "moneda",
+											"value": "<string>"
+										},
+										{
+											"key": "ticker",
+											"value": "<string>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/api/v1/mercado/cotizaciones/forex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MarketData/v1/mercado/cotizaciones/forex",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MarketData",
+								"v1",
+								"mercado",
+								"cotizaciones",
+								"forex"
+							],
+							"query": [
+								{
+									"key": "segmento",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "plazo",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "moneda",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "ticker",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://apiuat.mae.com.ar/api/v1/mercado/cotizaciones/forex?segmento=<string>&plazo=<string>&moneda=<string>&ticker=<string>&pageNumber=<integer>",
+									"protocol": "https",
+									"host": [
+										"apiuat",
+										"mae",
+										"com",
+										"ar"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mercado",
+										"cotizaciones",
+										"forex"
+									],
+									"query": [
+										{
+											"key": "segmento",
+											"value": "<string>"
+										},
+										{
+											"key": "plazo",
+											"value": "<string>"
+										},
+										{
+											"key": "moneda",
+											"value": "<string>"
+										},
+										{
+											"key": "ticker",
+											"value": "<string>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/api/v1/mercado/cotizaciones/repo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MarketData/v1/mercado/cotizaciones/repo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MarketData",
+								"v1",
+								"mercado",
+								"cotizaciones",
+								"repo"
+							],
+							"query": [
+								{
+									"key": "fechaDesde",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "fechaHasta",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://apiuat.mae.com.ar/api/v1/mercado/cotizaciones/cauciones?segmento=<string>&plazo=<string>&moneda=<string>&ticker=<string>&pageNumber=<integer>",
+									"protocol": "https",
+									"host": [
+										"apiuat",
+										"mae",
+										"com",
+										"ar"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mercado",
+										"cotizaciones",
+										"cauciones"
+									],
+									"query": [
+										{
+											"key": "segmento",
+											"value": "<string>"
+										},
+										{
+											"key": "plazo",
+											"value": "<string>"
+										},
+										{
+											"key": "moneda",
+											"value": "<string>"
+										},
+										{
+											"key": "ticker",
+											"value": "<string>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/api/v1/mercado/boletin/ReporteResumenFinal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/MarketData/v1/mercado/boletin/reporteresumenfinal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"MarketData",
+								"v1",
+								"mercado",
+								"boletin",
+								"reporteresumenfinal"
+							],
+							"query": [
+								{
+									"key": "segmento",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "plazo",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "moneda",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "ticker",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.mae.com.ar/MarketData/v1/mercado/boletin/reporteresumenfinal",
+									"protocol": "https",
+									"host": [
+										"api",
+										"mae",
+										"com",
+										"ar"
+									],
+									"path": [
+										"MarketData",
+										"v1",
+										"mercado",
+										"boletin",
+										"reporteresumenfinal"
+									],
+									"query": [
+										{
+											"key": "segmento",
+											"value": "<string>",
+											"disabled": true
+										},
+										{
+											"key": "plazo",
+											"value": "<string>",
+											"disabled": true
+										},
+										{
+											"key": "moneda",
+											"value": "<string>",
+											"disabled": true
+										},
+										{
+											"key": "ticker",
+											"value": "<string>",
+											"disabled": true
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": {
+					"value": "",
+					"key": "x-api-key"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.mae.com.ar"
+		}
+	]
+}

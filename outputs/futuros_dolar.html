@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Futuros de dólar · Fixed Income Toolkit</title>
+  <style>
+    :root{
+      --navy:#071d49;--navy2:#102b61;--ink:#13203b;--muted:#66728b;
+      --paper:#fff;--line:#dfe4ee;--bg:#f2f5fa;--blue:#2057d4;
+      --cyan:#dfeaff;--green:#12845b;--greenbg:#dff6ed;--amber:#96610a;
+      --amberbg:#fff0c9;--red:#b23a48;--redbg:#ffe6e8;--shadow:0 10px 28px rgba(7,29,73,.08)
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .topbar{height:52px;background:var(--navy);color:#fff;display:flex;align-items:center;padding:0 28px;gap:28px;box-shadow:0 3px 12px rgba(5,19,48,.22)}
+    .brand{font-weight:760;letter-spacing:-.02em;white-space:nowrap}.brand span{color:#85aaff}
+    .nav{display:flex;gap:8px}.nav a{color:#cbd7f0;text-decoration:none;font-size:13px;font-weight:650;padding:8px 12px;border-radius:8px}.nav a:hover,.nav a.active{background:#17366f;color:#fff}
+    .shell{max-width:1760px;margin:0 auto;padding:24px 26px 32px}
+    .hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:18px}
+    .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:780;margin-bottom:6px}
+    h1{font-size:30px;letter-spacing:-.035em;margin:0 0 7px}.subtitle{color:var(--muted);font-size:14px;line-height:1.5;max-width:850px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.badge{border-radius:999px;padding:7px 10px;font-size:11px;font-weight:760;white-space:nowrap;border:1px solid transparent}
+    .badge.green{background:var(--greenbg);color:var(--green);border-color:#b9ead8}.badge.amber{background:var(--amberbg);color:var(--amber);border-color:#f0d48d}.badge.blue{background:#e4ecff;color:#254fa8;border-color:#c8d7ff}
+    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:15px 16px;box-shadow:var(--shadow)}
+    .card-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:750}.card-value{font-size:25px;font-weight:780;letter-spacing:-.025em;margin-top:6px}.card-note{font-size:11px;color:var(--muted);margin-top:4px}
+    .panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+    .toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 15px;border-bottom:1px solid var(--line);background:#fbfcff}
+    .controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.segmented{display:flex;background:#edf1f8;border-radius:9px;padding:3px}.segmented button{border:0;background:transparent;color:var(--muted);font-weight:700;font-size:12px;padding:7px 10px;border-radius:7px;cursor:pointer}.segmented button.active{background:#fff;color:var(--navy);box-shadow:0 1px 5px rgba(7,29,73,.15)}
+    input{height:34px;border:1px solid #d4dbea;border-radius:8px;padding:0 11px;color:var(--ink);font:inherit;font-size:12px;min-width:210px;outline:none}input:focus{border-color:#7b9eea;box-shadow:0 0 0 3px #e6edff}
+    .refresh{height:34px;border:0;border-radius:8px;background:var(--navy);color:#fff;font-weight:720;font-size:12px;padding:0 13px;cursor:pointer}.refresh:disabled{opacity:.55;cursor:wait}
+    .sync{font-size:11px;color:var(--muted);text-align:right}.sync strong{color:var(--ink)}
+    .tablewrap{overflow:auto;max-height:640px}table{border-collapse:separate;border-spacing:0;width:100%;min-width:1510px;font-variant-numeric:tabular-nums}
+    thead th{position:sticky;top:0;z-index:2;background:#18213a;color:#f7f9ff;font-size:10px;text-transform:uppercase;letter-spacing:.055em;text-align:right;padding:10px 10px;border-right:1px solid #33405e;white-space:nowrap}
+    thead th:first-child,thead th:nth-child(2),thead th:nth-child(3){text-align:left}
+    tbody td{padding:9px 10px;border-bottom:1px solid var(--line);border-right:1px solid #edf0f5;text-align:right;font-size:12px;white-space:nowrap;background:#fff}
+    tbody tr:nth-child(even) td{background:#fafbfe}tbody tr:hover td{background:#edf3ff}
+    tbody td:first-child{text-align:left;font-weight:790;color:var(--navy);position:sticky;left:0;z-index:1;background:inherit;border-right:1px solid #ced7e9}
+    tbody td:nth-child(2),tbody td:nth-child(3){text-align:left}.price{font-weight:780;color:#123f9d}.missing{color:#a4adbf}.mini{display:inline-block;padding:3px 6px;border-radius:5px;background:#ece9ff;color:#5a45a9;font-size:9px;font-weight:780}.standard{display:inline-block;padding:3px 6px;border-radius:5px;background:#e4efff;color:#235aa9;font-size:9px;font-weight:780}
+    .state{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:730;color:var(--green)}.state:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.state.empty{color:#8792a7}
+    .emptyrow{padding:48px!important;text-align:center!important;color:var(--muted)!important;position:static!important;font-weight:500!important}
+    .foot{display:flex;justify-content:space-between;gap:18px;padding:12px 15px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);line-height:1.45}.foot strong{color:var(--ink)}
+    .alert{margin-top:13px;padding:12px 14px;border:1px solid #f1d79a;background:#fff8e7;color:#77521a;border-radius:10px;font-size:12px;line-height:1.5}
+    @media(max-width:900px){.hero{display:block}.badges{justify-content:flex-start;margin-top:14px}.cards{grid-template-columns:repeat(2,1fr)}.toolbar{align-items:flex-start;flex-direction:column}.sync{text-align:left}.topbar{padding:0 14px}.shell{padding:18px 12px}.nav a{padding:7px 8px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Fixed Income <span>Toolkit</span></div>
+    <nav class="nav" aria-label="Secciones">
+      <a href="/">Letras y bonos</a>
+      <a href="/futures" class="active" aria-current="page">Futuros de dólar</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Mercado observado · DLR</div>
+        <h1>Futuros de dólar</h1>
+        <div class="subtitle">Todos los vencimientos estándar y mini visibles en la fuente pública de A3 / Matba Rofex. Cada precio se identifica como última operación observada; no se sustituye por ajuste, bid, ask ni cierre.</div>
+      </div>
+      <div class="badges">
+        <span class="badge green">Datos observados</span>
+        <span class="badge amber">Fuente provisoria</span>
+        <span class="badge blue">R-009 · Under Review</span>
+      </div>
+    </section>
+
+    <section class="cards" aria-label="Resumen">
+      <article class="card"><div class="card-label">Contratos activos</div><div class="card-value" id="contractCount">—</div><div class="card-note">Estándar + mini</div></article>
+      <article class="card"><div class="card-label">Serie estándar</div><div class="card-value" id="standardCount">—</div><div class="card-note">Multiplicador según fuente</div></article>
+      <article class="card"><div class="card-label">Serie mini</div><div class="card-value" id="miniCount">—</div><div class="card-note">Identificada por ticker M</div></article>
+      <article class="card"><div class="card-label">Último dato recibido</div><div class="card-value" id="latestTime" style="font-size:19px">—</div><div class="card-note" id="tradeCount">Sin datos almacenados</div></article>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div class="controls">
+          <div class="segmented" role="group" aria-label="Tipo de contrato">
+            <button type="button" class="active" data-filter="all">Todos</button>
+            <button type="button" data-filter="standard">Estándar</button>
+            <button type="button" data-filter="mini">Mini</button>
+          </div>
+          <input id="search" type="search" placeholder="Buscar instrumento…" autocomplete="off">
+          <button id="refreshBtn" class="refresh" type="button">Actualizar ahora</button>
+        </div>
+        <div class="sync" id="syncStatus"><strong>Preparando vista local…</strong><br>Actualización automática cada 15 minutos</div>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Instrumento</th><th>Tipo</th><th>Vencimiento</th><th>Días</th>
+              <th>Vol. C</th><th>Compra</th><th>Venta</th><th>Vol. V</th>
+              <th>Última op.</th><th>Vol. op.</th><th>Hora</th><th>Ajuste</th>
+              <th>Ajuste ant.</th><th>Mín</th><th>Máx</th><th>Int. abierto</th><th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="rows"><tr><td class="emptyrow" colspan="17">Cargando contratos locales…</td></tr></tbody>
+        </table>
+      </div>
+      <div class="foot">
+        <span><strong>Precio:</strong> ARS por USD 1, según el contrato DLR.</span>
+        <span>“—” significa que el visor público no entregó ese campo; el Toolkit no lo reconstruye.</span>
+      </div>
+    </section>
+
+    <div class="alert"><strong>Alcance de esta etapa:</strong> pantalla observacional local. No incluye dólar spot ni cálculos de tasa, paridad, devaluación implícita o equivalencia forward/futuro. La investigación R-009 continúa bajo revisión.</div>
+  </main>
+
+  <script>
+    const REFRESH_INTERVAL_MS = 15*60*1000;
+    const MISSING_REASON = "No disponible en la fuente pública integrada";
+    let allContracts = [];
+    let selectedFilter = "all";
+
+    function exactDecimal(value){
+      if(value===null || value===undefined || value==="") return "—";
+      const raw=String(value);
+      const match=raw.match(/^(-?)(\d+)(?:\.(\d+))?$/);
+      if(!match) return raw;
+      const grouped=match[2].replace(/\B(?=(\d{3})+(?!\d))/g,".");
+      return `${match[1]}${grouped}${match[3]!==undefined?","+match[3]:""}`;
+    }
+
+    function localTime(value, full=false){
+      if(!value) return "—";
+      const date=new Date(value);
+      if(Number.isNaN(date.getTime())) return value;
+      return new Intl.DateTimeFormat("es-AR", full?{
+        day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false
+      }:{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(date);
+    }
+
+    function maturityLabel(value){
+      const raw=String(value||"");
+      const match=raw.match(/^(\d{4})(\d{2})$/);
+      if(!match) return value;
+      const months={"01":"ENE","02":"FEB","03":"MAR","04":"ABR","05":"MAY","06":"JUN","07":"JUL","08":"AGO","09":"SEP","10":"OCT","11":"NOV","12":"DIC"};
+      return months[match[2]]?`${months[match[2]]} ${match[1]}`:value;
+    }
+
+    function isoDate(value){
+      const match=String(value||"").match(/^(\d{4})-(\d{2})-(\d{2})/);
+      return match?`${match[3]}/${match[2]}/${match[1]}`:null;
+    }
+
+    function maturitySourceLabel(source){
+      if(source==="provider-end-date") return "Vencimiento informado por la fuente";
+      if(source==="convention-last-business-day") return "Vencimiento estimado: último día hábil del mes (sin feriados)";
+      return "Vencimiento no disponible en la fuente";
+    }
+
+    function cell(value, className="", missingReason=MISSING_REASON){
+      const td=document.createElement("td");
+      td.className=className;
+      if(value===null || value===undefined || value===""){
+        td.textContent="—";td.classList.add("missing");td.title=missingReason;
+      }else{td.textContent=value}
+      return td;
+    }
+
+    function visibleContracts(){
+      const query=document.getElementById("search").value.trim().toUpperCase();
+      return allContracts.filter(contract=>{
+        if(selectedFilter==="mini" && !contract.is_mini) return false;
+        if(selectedFilter==="standard" && contract.is_mini) return false;
+        return !query || contract.ticker.toUpperCase().includes(query) ||
+          String(contract.description||"").toUpperCase().includes(query);
+      });
+    }
+
+    function renderRows(){
+      const body=document.getElementById("rows");body.replaceChildren();
+      const contracts=visibleContracts();
+      if(!contracts.length){
+        const tr=document.createElement("tr");
+        const td=cell("No hay contratos para este filtro","emptyrow");td.colSpan=17;
+        tr.append(td);body.append(tr);return;
+      }
+      contracts.forEach(contract=>{
+        const tr=document.createElement("tr");
+        tr.append(cell(contract.ticker));
+        const type=cell(contract.is_mini?"MINI":"ESTÁNDAR",contract.is_mini?"mini":"standard");tr.append(type);
+        const maturityText=isoDate(contract.maturity_date)||maturityLabel(contract.maturity_month_year);
+        const maturityCell=cell(maturityText);
+        maturityCell.title=maturitySourceLabel(contract.maturity_source);
+        if(contract.maturity_source==="convention-last-business-day") maturityCell.style.fontStyle="italic";
+        tr.append(maturityCell);
+        tr.append(cell(contract.days_to_expiration));
+        tr.append(cell(null));tr.append(cell(null));tr.append(cell(null));tr.append(cell(null));
+        tr.append(cell(contract.last_trade_price===null?null:exactDecimal(contract.last_trade_price),"price"));
+        tr.append(cell(contract.last_trade_volume===null?null:exactDecimal(contract.last_trade_volume)));
+        tr.append(cell(localTime(contract.last_trade_timestamp_utc)));
+        tr.append(cell(null));tr.append(cell(null));tr.append(cell(null));tr.append(cell(null));tr.append(cell(null));
+        const state=cell(contract.last_trade_price?"Observado":"Sin op. reciente",contract.last_trade_price?"state":"state empty");tr.append(state);
+        body.append(tr);
+      });
+    }
+
+    function renderSummary(payload){
+      const standard=allContracts.filter(contract=>!contract.is_mini).length;
+      const mini=allContracts.length-standard;
+      document.getElementById("contractCount").textContent=String(allContracts.length);
+      document.getElementById("standardCount").textContent=String(standard);
+      document.getElementById("miniCount").textContent=String(mini);
+      const timestamps=allContracts.map(c=>c.received_at).filter(Boolean).sort();
+      document.getElementById("latestTime").textContent=timestamps.length?localTime(timestamps[timestamps.length-1],true):"—";
+      document.getElementById("tradeCount").textContent=`${payload.trade_count} operaciones únicas almacenadas`;
+    }
+
+    async function refreshFutures(){
+      const button=document.getElementById("refreshBtn");button.disabled=true;
+      const status=document.getElementById("syncStatus");
+      status.innerHTML="<strong>Actualizando desde SQLite local…</strong><br>Sin consultar el mercado desde el navegador";
+      try{
+        const response=await fetch("/api/futures",{cache:"no-store",headers:{Accept:"application/json"}});
+        if(!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload=await response.json();
+        allContracts=Array.isArray(payload.contracts)?payload.contracts:[];
+        renderSummary(payload);renderRows();
+        status.innerHTML=`<strong>Vista actualizada ${localTime(payload.generated_at,true)}</strong><br>Fuente: A3 público · ${payload.source_status} · próximo refresco 15 min`;
+      }catch(error){
+        status.innerHTML="<strong>No se pudo leer la base local</strong><br>El actualizador puede seguir iniciándose o estar detenido";
+        if(!allContracts.length){
+          document.getElementById("rows").innerHTML='<tr><td class="emptyrow" colspan="17">Todavía no hay observaciones locales. Iniciá el observador de futuros.</td></tr>';
+        }
+      }finally{button.disabled=false}
+    }
+
+    document.querySelectorAll("[data-filter]").forEach(button=>button.addEventListener("click",()=>{
+      selectedFilter=button.dataset.filter;
+      document.querySelectorAll("[data-filter]").forEach(item=>item.classList.toggle("active",item===button));
+      renderRows();
+    }));
+    document.getElementById("search").addEventListener("input",renderRows);
+    document.getElementById("refreshBtn").addEventListener("click",refreshFutures);
+    refreshFutures();
+    setInterval(refreshFutures,REFRESH_INTERVAL_MS);
+  </script>
+</body>
+</html>
