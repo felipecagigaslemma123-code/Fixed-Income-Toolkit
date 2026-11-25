@@ -69,9 +69,33 @@ No pricing model should be considered complete without successful validation.
 
 ---
 
+## Version 0.2.0 — Shared fixed-income library (2026-11-25)
+
+Felipe approves the unchanged transfer of Cartera's existing calculations and
+public-market sources. Research records R-010 (CER), R-011 (TAMAR including
+coupon window/current coupon/floor) and R-012 (A3500 bond cash flows) record
+validation and implementation approval based on the 13 November verification
+and subsequent reviewed corrections. The provider reads the official REM
+medians and BCRA series 30, 44 and 5. The engine computes curves, indexed
+payments, IAMC schedules and the existing ACT/365 purchase-yield solver.
+
+This adds a reusable library scope alongside the existing LECAP/BONCAP screen;
+it does not expand that screen's calculation-eligibility gate. R-006 LELINK
+secondary-market yields and FX total returns **remain unapproved**, and R-009
+is unchanged. Instrument-specific contractual disputes (TZXM7) remain open.
+
+The Toolkit contains calculations and public-market data, without client data.
+Cartera installs a fixed version from GitHub and keeps holdings, lots, manual
+purchase prices, `--datos` persistence, client flows, reports, risk, alerts and
+the client dashboard. IAMC's multi-asset downloader stays in Cartera. Existing
+Toolkit screens and public-market storage remain available as before.
+See [migration API and validation](migration_0_2_0.md) and the
+[research register](research/README.md).
+
 ## Planned Future Modules
 
-The following instruments are planned for future releases:
+Broader pricing/analytics for the following instruments remain future work;
+0.2.0 supports only the explicitly documented cash-flow projections above:
 
 ### Fixed Income Instruments
 
@@ -130,6 +154,6 @@ Feature expansion must never compromise pricing accuracy.
 
 **Status:** Active
 
-**Version:** 1.3
+**Version:** 1.4
 
-**Last Updated:** Wednesday, 12 August 2026
+**Last Updated:** 2026-11-25

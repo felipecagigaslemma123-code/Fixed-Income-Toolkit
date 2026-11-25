@@ -4,7 +4,7 @@ This register provides the administrative view of the financial research used
 by the Fixed Income Toolkit. The individual research document remains the
 authoritative record for each methodology.
 
-## Status as of Monday, 26 October 2026
+## Status as of 2026-11-25
 
 | Research ID | Topic | Validation status | Implementation approved | Current use |
 |-------------|-------|-------------------|-------------------------|-------------|
@@ -15,6 +15,9 @@ authoritative record for each methodology.
 | R-005 | Macaulay and Modified Duration | Validated (single-payment letras) | Yes (owner, 2026-08-11) | Production: `financial_engine/duration.py` (single-payment letras) |
 | R-006 | Dollar-linked Treasury letras (LELINK) yield + FX total return | Under review — **Q3 resolved** (yield convention reconciled 2026-10-26); Q5 open | No | Research only; prototype UNVALIDATED outside `src/financial_engine/` |
 | R-009 | FX forward and provisional futures proxy | Under review | No | Research only |
+| R-010 | CER curve and indexed cash-flow projection | Validated | Yes (Felipe, 2026-11-25) | `financial_engine/indexed.py`, `indexed_payments.py` |
+| R-011 | TAMAR projection, coupon window, current coupon and floor | Validated | Yes (Felipe, 2026-11-25) | `financial_engine/indexed.py`, `indexed_payments.py` |
+| R-012 | A3500 projection for dollar-linked bond cash flows | Validated | Yes (Felipe, 2026-11-25) | `financial_engine/indexed.py`, `indexed_payments.py`, `cash_flows.py` |
 
 ## Consolidated Decisions
 
@@ -68,6 +71,17 @@ when the selected price and market date are not aligned.
 R-005 is approved only for the documented single-payment scope. R-009 remains
 without production approval.
 
+## Projection Migration Approval — 2026-11-25
+
+Felipe approves R-010/R-011/R-012 for the unchanged migration from Cartera,
+based on the recorded verification of 13 November and its 16 November review.
+See [CER](010_cer_projection.md), [TAMAR](011_tamar_projection.md) and
+[A3500 bond cash flows](012_a3500_bond_projection.md). Each record separates
+published BCRA data from REM estimates, contractual inputs and unresolved
+instrument-specific issues. This approval leaves **R-006 unapproved** and
+R-009 unchanged. Reusable IAMC schedule merging and the existing ACT/365
+purchase-yield solver are moved unchanged; [migration scope](../migration_0_2_0.md).
+
 ## Supporting Review
 
 See `bibliography_review_2026-08-06.md` for the source-by-source audit and the
@@ -75,6 +89,6 @@ candidate research topics proposed for the future bond phase.
 
 ---
 
-**Version:** 1.3
+**Version:** 1.4
 
-**Last Updated:** Monday, 26 October 2026
+**Last Updated:** 2026-11-25

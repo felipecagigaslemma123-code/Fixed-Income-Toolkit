@@ -8,7 +8,9 @@ against official sources.
 
 > Status: **incremental implementation & validation.** Approved LECAP/BONCAP
 > VPV, HPR, TNA, TEA, TEM and single-payment Duration components are
-> implemented. Every additional formula remains independently research-gated.
+> implemented. Version **0.2.0** also packages the existing BCRA/REM providers,
+> CER/TAMAR/A3500 projections and IAMC cash-flow schedules, approved by Felipe
+> under R-010/R-011/R-012. R-006 remains unapproved.
 
 For supported LECAP/BONCAP instruments, contractual VPV uses the
 Treasury-adapted 30/360 convention. Residual secondary-market yields use actual
@@ -43,6 +45,49 @@ Optionally (re)install the declared dependencies into the active environment;
 this does not replace the existing `.venv`:
 
     pip install -e ".[test]"
+
+## Installable library and Cartera
+
+Install with `python -m pip install .` (build tooling: setuptools >=61 and wheel).
+Packages under `src/` include `financial_engine`, `market_data` and
+`local_dashboard`, with all their subpackages. Production dependencies remain
+Python 3.9+ and `openpyxl`; pytest is only a test dependency.
+
+Cartera installs the private GitHub repository at a fixed release reference:
+
+```text
+fixed-income-toolkit @ git+https://github.com/felipecagigaslemma123-code/Fixed-Income-Toolkit.git@v0.2.0
+```
+
+Use `python -m pip install -r requirements.txt` in Cartera with access to that
+private repository through the user's Git configuration. Credentials never go
+in requirements or source. The release reference must exist on GitHub for that
+installation; this migration creates no tag and performs no push.
+
+For offline development with sibling clones:
+
+```bash
+cd toolkit && ../venv/bin/python -m pytest -q -p no:cacheprovider
+cd ../cartera && PYTHONPATH=src:../toolkit/src ../venv/bin/python -m unittest discover -s tests
+```
+
+The dependency is **Cartera → Toolkit**. The Toolkit holds no client data and
+never imports Cartera. Pure financial modules have no Excel/network dependency;
+BCRA transport, capture persistence and the REM reader live in `market_data`.
+Client lots, manual purchase prices, `--datos` files, reports, risk and alerts
+remain in Cartera. IAMC acquisition also remains there because it covers stocks
+and CEDEARs as well as bonds. Public English function/class names and the
+preserved Spanish compatibility fields/keywords are documented in the
+[migration API table](docs/migration_0_2_0.md).
+
+BCRA sample CLI (same Spanish flags and messages as before):
+
+```bash
+python tools/bcra_extract.py --desde 2026-11-01 --hasta 2026-11-13 --salida /tmp/bcra.json
+```
+
+It calls the installed `market_data.bcra_cli` implementation and requires a new
+output file outside the invoking project.
 
 ## Usage
 
@@ -141,6 +186,9 @@ remains under review. For an on-demand one-time refresh use:
 Tests cover the approved maturity-value, day-count, HPR/TNA/TEA/TEM and
 single-payment Duration calculations, the A3/SQLite data path, lifecycle
 activation, futures observations and the dashboard temporal-alignment policy.
+The 56 unchanged migrated regression cases cover BCRA extraction/CLI, REM,
+index curves, fixed-income schedules, purchase yields and indexed payments.
+Total: 245 tests (189 previous + 56 transferred).
 
 ## Governance
 

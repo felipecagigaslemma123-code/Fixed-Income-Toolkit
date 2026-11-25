@@ -197,6 +197,37 @@ price and calculation dates were not aligned.
 
 ---
 
+# Shared Index and Cash-flow Migration (0.2.0)
+
+Specification references: R-010, R-011 and R-012. This approved code movement
+preserves the complete former Cartera contract: positional/keyword signatures,
+Spanish data fields and schema keys, mutable schedule objects, Decimal
+operation order and precision, dates, manual assumptions, origin labels,
+warning/error messages, tolerances and the ACT/365 solver's interval/termination.
+It is an explicit migration exception to the single immutable input/result and
+single primary function patterns below. Adopting that pattern here would change
+the existing consumer contract and is outside Felipe's instruction.
+
+`financial_engine/indexed.py` contains pure curve calculations;
+`indexed_payments.py` pure contractual payment projection;
+`cash_flows.py` schedule parsing/merging and purchase yield;
+`indexed_types.py` shared data objects; `_common.py` shared validation/precision.
+`market_data/providers/bcra.py` owns transport, persistence and REM Excel reading,
+and reexports `RemSurvey`/`BCRAError` from the pure shared types to avoid an
+engine dependency on a network or spreadsheet provider. No formulas are added.
+For fixed-rate schedules, purchase yield preserves the prior solver:
+`sum(total / (1+r)**((payment_date-settlement).days/365)) - price = 0`,
+`[-0.99, 10]`, 180 bisections, residual tolerance `1e-10`, precision 50 and `None`
+for the existing invalid/unbracketed cases. Schedule gaps/manual reconciliation
+and every warning are unchanged. The original tests and expected values are
+transferred, with pure fixture setup separated from Cartera's file management.
+Details and API mapping: [migration_0_2_0.md](migration_0_2_0.md).
+
+R-006 remains unapproved; this scope does not resolve its Q5, change its status
+or activate its LELINK yield/FX-return methodology.
+
+---
+
 # Financial Engine Implementation Rules
 
 These rules apply to every module inside:
@@ -480,6 +511,6 @@ Performance optimizations shall never compromise financial correctness.
 
 ---
 
-**Version:** 1.3
+**Version:** 1.4
 
-**Last Updated:** Wednesday, 12 August 2026
+**Last Updated:** 2026-11-25

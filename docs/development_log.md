@@ -1,5 +1,36 @@
 # Development Log
 
+## 2026-11-25 — Move shared fixed-income code from Cartera into version 0.2.0
+
+- Felipe approves R-010/R-011/R-012 based on the recorded 13 November
+  BCRA/IAMC verification and reviewed corrections; REM supplies estimates.
+  R-006 remains unapproved and its eligibility gate is unchanged.
+- Move BCRA transport/capture/REM to `market_data.providers.bcra`; index
+  curves, indexed payments, schedules and purchase yield to `financial_engine`.
+  Share pure types/validation without importing Cartera or network providers
+  from the engine. Preserve every Decimal operation, date and message.
+- Declare 12 installable src packages, add `financial_engine/__init__.py`,
+  bump to 0.2.0; package the BCRA CLI under `market_data.bcra_cli`.
+- Cartera imports the installed toolkit, removes its copied letras engine,
+  keeps Spanish compatibility aliases, client aggregation and all --datos files.
+- Transfer 56 tests unchanged in expected values, with BCRA/REM/IAMC fixtures.
+  Cartera 1083 → 1027; Toolkit 189 → 245; combined total stays 1272.
+  All 1083 original Cartera tests also passed against the migrated engine
+  before transferring the 56 cases.
+- Validation: Cartera 1027 passed. Toolkit 241 passed, with the same four
+  baseline socket.bind PermissionErrors imposed by this environment.
+  AST audit confirms 50 moved definitions, retained customer helpers and
+  letras engine unchanged apart from names/imports; all Cartera toolkit imports
+  belong to declared packages. All 1027 Cartera tests also pass using only a
+  staged tree of those declared packages, without Toolkit src on PYTHONPATH.
+  Local pip-build verification is blocked by
+  setuptools 58.0.4 (<61) and absent wheel, with no network to provision them.
+  No claim of a successful installed-package test is made.
+- Both branches: `separacion-renta-fija`; no push, tags or amend.
+  Commits await the full-suite condition or Felipe's explicit decision on the
+  preexisting environment failures. Full mapping/test ledger:
+  [migration_0_2_0.md](migration_0_2_0.md).
+
 ## 12 August 2026 — Owner reconfirmed the split day-count convention
 
 - The owner selected the existing mixed convention as the definitive project

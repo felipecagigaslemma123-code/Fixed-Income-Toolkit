@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fixed-income-toolkit"
-version = "0.1.0"
+version = "0.2.0"
 description = "Professional fixed-income analytics toolkit for Argentine Treasury instruments (LECAP / BONCAP)."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -18,12 +18,10 @@ test = [
     "pytest>=7,<9",
 ]
 
-[tool.setuptools]
-# No importable package is declared yet: engine modules under src/ are imported
-# via the pytest pythonpath below. A package (with __init__.py) can be declared
-# later when the public API is finalized. Installs stay dependency-only and the
-# existing import setup is preserved.
-packages = []
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["financial_engine*", "market_data*", "local_dashboard*"]
+namespaces = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

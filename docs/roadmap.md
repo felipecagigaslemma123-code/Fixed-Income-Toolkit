@@ -108,6 +108,29 @@ Planned features:
 
 ---
 
+## Version 0.2.0 — Shared fixed-income library (2026-11-25)
+
+Felipe approves the unchanged transfer of Cartera's existing calculations and
+public-market sources. Research records R-010 (CER), R-011 (TAMAR including
+coupon window/current coupon/floor) and R-012 (A3500 bond cash flows) record
+validation and implementation approval based on the 13 November verification
+and subsequent reviewed corrections. The provider reads the official REM
+medians and BCRA series 30, 44 and 5. The engine computes curves, indexed
+payments, IAMC schedules and the existing ACT/365 purchase-yield solver.
+
+This adds a reusable library scope alongside the existing LECAP/BONCAP screen;
+it does not expand that screen's calculation-eligibility gate. R-006 LELINK
+secondary-market yields and FX total returns **remain unapproved**, and R-009
+is unchanged. Instrument-specific contractual disputes (TZXM7) remain open.
+
+The Toolkit contains calculations and public-market data, without client data.
+Cartera installs a fixed version from GitHub and keeps holdings, lots, manual
+purchase prices, `--datos` persistence, client flows, reports, risk, alerts and
+the client dashboard. IAMC's multi-asset downloader stays in Cartera. Existing
+Toolkit screens and public-market storage remain available as before.
+See [migration API and validation](migration_0_2_0.md) and the
+[research register](research/README.md).
+
 # Development Status by Component
 
 This section tracks real progress per component, distinguishing research,
@@ -203,7 +226,7 @@ phase plan above.
 ## Research Governance Snapshot
 
 - Central status register: `docs/research/README.md`.
-- Last administrative synchronization: Wednesday, 12 August 2026.
+- Last administrative synchronization: 2026-11-25; R-010/R-011/R-012 approved; R-006 still unapproved.
 - R-001 through R-005 are approved only within their individually documented
   LECAP/BONCAP scopes; R-009 remains closed.
 - The visual dashboards are exploratory and must disclose the status of every
@@ -211,6 +234,6 @@ phase plan above.
 
 ---
 
-**Version:** 1.6
+**Version:** 1.7
 
-**Last Updated:** Wednesday, 12 August 2026
+**Last Updated:** 2026-11-25
